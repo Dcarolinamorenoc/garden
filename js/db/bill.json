@@ -1,0 +1,17 @@
+{
+    "camper":[
+        {
+            "cc": 1905975,
+            "full_name": "Pepito perez de la cruz",
+            "products": [
+                {
+                    "descriptions": "Incluye version desktop y mobile",
+                    "quanty": 2,
+                    "price": 100,
+                    "total": 200
+                    
+                }
+            ]
+        }
+    ]
+}
