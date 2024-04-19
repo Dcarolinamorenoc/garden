@@ -9,7 +9,35 @@
                     "quanty": 2,
                     "price": 100,
                     "total": 200
-                    
+
+                },
+                {
+                    "descriptions": "Incluye version desktop y mobile",
+                    "quanty": 2,
+                    "price": 100,
+                    "total": 200
+
+                },
+                {
+                    "descriptions": "Incluye version desktop y mobile",
+                    "quanty": 2,
+                    "price": 100,
+                    "total": 200
+
+                },
+                {
+                    "descriptions": "Incluye version desktop y mobile",
+                    "quanty": 2,
+                    "price": 100,
+                    "total": 200
+
+                },
+                {
+                    "descriptions": "Incluye version desktop y mobile",
+                    "quanty": 2,
+                    "price": 100,
+                    "total": 200
+
                 }
             ]
         }
