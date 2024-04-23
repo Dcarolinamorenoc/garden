@@ -21,4 +21,10 @@ import{
     getAllSpanishClientsNames
 } from "./module/clients.js";
 
-console.log(await getAllSpanishClientsNames());
+// console.log(await getAllSpanishClientsNames());
+
+import{
+    getAllOrderStatuses
+} from "./module/requests.js"
+
+console.log (await getAllOrderStatuses ());
