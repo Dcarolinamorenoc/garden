@@ -6,7 +6,7 @@ import {
 // console.log(await getAllOfficesFromSpainCityAndMovil());
 
 import{
-    getAll,
+    getAllNonSalesRepresentativeEmployees,
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail
 } from "./module/employees.js";
@@ -16,9 +16,11 @@ import{
 
 // console.log(await getAll());
 
+console.log (await getAllNonSalesRepresentativeEmployees ())
 
-import{
-    getAll3
-} from "./module/clients.js";
 
-console.log(await getAll3());
+// import{
+//     getAll3
+// } from "./module/clients.js";
+
+// console.log(await getAll3());
