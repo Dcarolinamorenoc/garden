@@ -14,13 +14,11 @@ import{
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
 
-// console.log(await getAll());
-
-console.log (await getAllNonSalesRepresentativeEmployees ())
+// console.log (await getAllNonSalesRepresentativeEmployees ())
 
 
-// import{
-//     getAll3
-// } from "./module/clients.js";
+import{
+    getAllSpanishClientsNames
+} from "./module/clients.js";
 
-// console.log(await getAll3());
+console.log(await getAllSpanishClientsNames());
