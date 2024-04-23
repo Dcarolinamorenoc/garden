@@ -14,4 +14,11 @@ import{
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
 
-console.log(await getAll());
+// console.log(await getAll());
+
+
+import{
+    getAll3
+} from "./module/clients.js";
+
+console.log(await getAll3());
