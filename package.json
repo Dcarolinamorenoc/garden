@@ -5,8 +5,15 @@
   "main": "js/main.js",
   "type": "module",
   "scripts": {
-    "dev": "node js/product.js",
-    "dataFireBill": "json-server js/db/bill.json -p 5600"
+    "dev": "node --watch js/main.js",
+    "clients": "json-server js/db/clients.json -p 5501",
+    "employees": "json-server js/db/employees.json -p 5502",
+    "gama": "json-server js/db/gama.json -p 5503",
+    "offices": "json-server js/db/offices.json -p 5504",
+    "payments": "json-server js/db/payments.json -p 5505",
+    "products": "json-server js/db/products.json -p 5506",
+    "request_details": "json-server js/db/request_details.json -p 5507",
+    "requests": "json-server js/db/requests.json -p 5508"
   },
   "keywords": [],
   "author": "",
