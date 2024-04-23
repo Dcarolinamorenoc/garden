@@ -1,3 +1,6 @@
-import {getAll} from "./module/offices.js";
+import {
+    getAllOfficesCodeAndCity, 
+    getAllOfficesFromSpainCityAndMovil
+} from "./module/offices.js";
 
-console.log(await getAll());
+console.log(await getAllOfficesFromSpainCityAndMovil());
