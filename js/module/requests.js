@@ -23,3 +23,21 @@ export const getAllOrderStatuses = async () => {
 
     return Array.from(uniqueStatuses);
 }
+
+// 9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
+
+export const getAllDelayedOrders = async () =>{
+    let res = await fetch("http://localhost:5508/requests?status=Rechazado");
+    let data = await res.json();
+    let dataUpdate = [];
+
+    data.forEach(val => {
+        dataUpdate.push({
+            Pedido_Codigo: val.code_request,
+            Cliente_Codigo: val.code_client,
+            Fecha_Esperada: val.date_expected,
+            Fecha_Entrega: val.date_delivery
+        })
+    });
+    return dataUpdate;
+}

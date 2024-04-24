@@ -24,14 +24,16 @@ import{
 // console.log(await getAllSpanishClientsNames());
 
 import{
-    getAllOrderStatuses
+    getAllOrderStatuses,
+    getAllDelayedOrders
 } from "./module/requests.js"
 
-// console.log (await getAllOrderStatuses ());
+// console.log (await getAllOrderStatuses());
+console.log (await getAllDelayedOrders());
 
 import{
     getUniqueClientCodesWithPaymentsIn2008
 } from "./module/payments.js"
 
 
-console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
+// console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
