@@ -44,4 +44,25 @@ export const getAllDelayedOrders = async () =>{
 
 // 10.Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
 
-// export const 
+export const getAll = async () =>{
+    let res = await fetch("http://localhost:5508/requests?status=Entregado");
+    let data = await res.json();
+    let dataUpdate = [];
+    data.forEach(val => {
+        let date_wait = new Date(val.date_wait);
+        let date_delivery = new Date(val.date_delivery);
+
+        let difference = date_wait.getTime() - date_delivery.getTime();
+        let differenceInDays = difference / (1000 * 3600 * 24);
+
+        if (differenceInDays >= 2){
+            dataUpdate.push({
+                Pedido_Codigo: val.code_request,
+                Cliente_Codigo: val.code_client,
+                Fecha_Esperada: val.date_wait,
+                Fecha_Entrega: val.date_delivery
+            })
+        }
+    })
+    return dataUpdate;
+} 
