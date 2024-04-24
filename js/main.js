@@ -18,10 +18,12 @@ import{
 
 
 import{
-    getAllSpanishClientsNames
+    getAllSpanishClientsNames,
+    getClientsInMadridWithSalesRep11Or30
 } from "./module/clients.js";
 
 // console.log(await getAllSpanishClientsNames());
+console.log(await getClientsInMadridWithSalesRep11Or30())
 
 import{
     getAllOrderStatuses,
@@ -49,7 +51,8 @@ import{
 // console.log(await getAllUniquePaymentMethods());
 
 import{
-    getOrnamentalProductsOver100StockByPrice
+    getOrnamentalProductsOver100StockByPrice,
+
 } from "./module/products.js"
 
-console.log(await getOrnamentalProductsOver100StockByPrice ());
+// console.log(await getOrnamentalProductsOver100StockByPrice ());
