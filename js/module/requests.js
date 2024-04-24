@@ -35,9 +35,13 @@ export const getAllDelayedOrders = async () =>{
         dataUpdate.push({
             Pedido_Codigo: val.code_request,
             Cliente_Codigo: val.code_client,
-            Fecha_Esperada: val.date_expected,
+            Fecha_Esperada: val.date_wait,
             Fecha_Entrega: val.date_delivery
         })
     });
     return dataUpdate;
 }
+
+// 10.Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+
+// export const 
