@@ -39,9 +39,11 @@ import{
 
 import{
     getUniqueClientCodesWithPaymentsIn2008,
-    getPaypalPayments2008OrderedDescending
+    getPaypalPayments2008OrderedDescending,
+    getAllUniquePaymentMethods
 } from "./module/payments.js"
 
 
 // console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
-console.log (await getPaypalPayments2008OrderedDescending ())
+// console.log (await getPaypalPayments2008OrderedDescending ())
+console.log(await getAllUniquePaymentMethods())
