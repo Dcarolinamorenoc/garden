@@ -26,12 +26,14 @@ import{
 import{
     getAllOrderStatuses,
     getAllDelayedOrders,
-    getAll
+    getDelayedOrdersList,
+    getRejectedOrders2009
 } from "./module/requests.js"
 
 // console.log (await getAllOrderStatuses());
 // console.log (await getAllDelayedOrders());
-console.log(await getAll());
+// console.log(await getDelayedOrdersList());
+console.log(await getRejectedOrders2009());
 
 import{
     getUniqueClientCodesWithPaymentsIn2008
