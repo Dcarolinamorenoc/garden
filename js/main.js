@@ -35,11 +35,13 @@ import{
 // console.log (await getAllDelayedOrders());
 // console.log(await getDelayedOrdersList());
 // console.log(await getRejectedOrders2009());
-console.log(await getOrdersDeliveredInJanuary());
+// console.log(await getOrdersDeliveredInJanuary());
 
 import{
-    getUniqueClientCodesWithPaymentsIn2008
+    getUniqueClientCodesWithPaymentsIn2008,
+    getPaypalPayments2008OrderedDescending
 } from "./module/payments.js"
 
 
 // console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
+console.log (await getPaypalPayments2008OrderedDescending ())
