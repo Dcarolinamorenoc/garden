@@ -27,4 +27,11 @@ import{
     getAllOrderStatuses
 } from "./module/requests.js"
 
-console.log (await getAllOrderStatuses ());
+// console.log (await getAllOrderStatuses ());
+
+import{
+    getUniqueClientCodesWithPaymentsIn2008
+} from "./module/payments.js"
+
+
+console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
