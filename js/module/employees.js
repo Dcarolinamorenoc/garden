@@ -48,3 +48,23 @@ export const getAllNonSalesRepresentativeEmployees = async () => {
     });
     return dataUpdate;
 }
+
+
+
+// ------------------------------------------------------------------------------
+
+
+
+// Consultas multitabla (Composición interna)
+
+// 7. Devuelve el nombre de los clientes y el nombre de sus representantes 
+// junto con la ciudad de la oficina a la que pertenece el representante.
+
+
+// Obtener la informacion de un empleado por su codigo
+
+export const getEmployByCode = async(code) =>{
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}

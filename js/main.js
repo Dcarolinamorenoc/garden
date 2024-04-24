@@ -19,11 +19,15 @@ import{
 
 import{
     getAllSpanishClientsNames,
-    getClientsInMadridWithSalesRep11Or30
+    getClientsInMadridWithSalesRep11Or30,
+    getClientsEmploy
 } from "./module/clients.js";
 
 // console.log(await getAllSpanishClientsNames());
-console.log(await getClientsInMadridWithSalesRep11Or30())
+// console.log(await getClientsInMadridWithSalesRep11Or30())
+console.log ( await getClientsEmploy ());
+
+
 
 import{
     getAllOrderStatuses,
