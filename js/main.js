@@ -20,12 +20,14 @@ import{
 import{
     getAllSpanishClientsNames,
     getClientsInMadridWithSalesRep11Or30,
-    getClientsEmploy
+    getClientsEmploy,
+    getEmployeesCode
 } from "./module/clients.js";
 
 // console.log(await getAllSpanishClientsNames());
 // console.log(await getClientsInMadridWithSalesRep11Or30())
-console.log ( await getClientsEmploy ());
+// console.log ( await getClientsEmploy ());
+console.log (await getEmployeesCode ());
 
 
 

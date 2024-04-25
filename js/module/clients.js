@@ -39,7 +39,8 @@ export const getClientsInMadridWithSalesRep11Or30 = async () => {
 
 
 import { 
-    getEmployByCode 
+    getEmployByCode,
+    getEmployeeData
 } from "./employees.js";
 
 import { 
@@ -114,3 +115,55 @@ export const getClientsEmploy = async() =>{
     }
     return clients;
 }
+
+
+// 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+export const getEmployeesCode = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1:address1Client,
+            address2:address2Client,
+            city,
+            region:regionClients,
+            country:countryClients,
+            postal_code:postal_codeClients,
+            limit_credit,
+            id:idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        let [employ] = await getEmployeeData(code_employee_sales_manager);
+        let {
+            extension,
+            email,
+            code_boss,
+            position,
+            id: idEmploy,
+            name,
+            lastname1,
+            lastname2,
+            code_office,
+            employee_code,
+            ...employUpdate
+        } = employ;
+
+        let data = {...clientsUpdate, ...employUpdate};
+        let {
+            code_employee_sales_manager: codeEmployeeSalesManager,
+            ...dataUpdate       
+        } = data;
+
+        dataUpdate.name_employee = `${name} ${lastname1} ${lastname2}`;
+        clients[i] = dataUpdate;
+    }
+    return clients;
+};
