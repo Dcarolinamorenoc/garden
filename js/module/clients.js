@@ -53,7 +53,6 @@ import {
 // 7. Devuelve el nombre de los clientes y el nombre de sus representantes 
 // junto con la ciudad de la oficina a la que pertenece el representante.
 
-
 export const getClientsEmploy = async() =>{
     let res = await fetch("http://localhost:5501/clients");
     let clients = await res.json();
@@ -113,9 +112,15 @@ export const getClientsEmploy = async() =>{
         dataUpdate.name_employee = `${name} ${lastname1} ${lastname2}`
         clients[i] = dataUpdate
     }
+    // [
+    //     {
+    //         city: "San Francisco"
+    //         client_name : "GoldFish Garden"
+    //         name_employee: "Walter Santiago Sanchez Lopez"
+    //     }
+    // ]
     return clients;
 }
-
 
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 

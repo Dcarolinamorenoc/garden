@@ -5,34 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>report</title>
     <link rel="stylesheet" href="../css/report.css">
-    <!-- <script type="module" src="../js/bill.js" defer></script> -->
+    <script type="module" src="../js/report.js" defer></script>
 </head>
 <body>
     <main class="main">
+        <section class="main__banner">
+            <article class="banner__opcion">
+                <a href="#"><img src="../storage/img/arrowBack.svg"> Go back</a>
+                <a href="#"><img src="../storage/img/option.svg"></a>
+            </article>
+        </section>
         <section class="main__report">
             <article class="report__user">
-                <h1>Carolina’s Garden</h1>
-                <small>ID: 1344295024</small>
+                <h1>Report Garden</h1>
+                <small id="clock"></small>
+                <strong> Report / clients</strong>
             </article>
             <article class="report__menu">
-                <button>PLANTS</button>
-                <button>LOG</button>
-                <button>SETTINGS</button>
-                <button>PLANTS</button>
-                <button>LOG</button>
-                <button>SETTINGS</button>
-                <button>PLANTS</button>
-                <button>LOG</button>
-                <button>SETTINGS</button>
-                <button>PLANTS</button>
-                <button>LOG</button>
-                <button>SETTINGS</button>
+                <button class="report__active">clients</button>
+                <button>employees</button>
+                <button>gama</button>
+                <button>offices</button>
+                <button>payments</button>
+                <button>product</button>
+                <button>request details</button>
+                <button>requests</button>
             </article>
             <article class="report__details">
-                <details>
+                <details id="queryAboutTable7">
                     <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
+                        <div class="details__description">Campus: </div>
+                        <div class="details__container">
+                            <!-- <p>7. Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.</p> -->
+                            <<p><marquee behavior="" direction="">7. Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.</marquee></p>
+                        </div>
+                    </summary>
+                    <div class="report__container"></div>
+                </details>
+                <!-- <details data-click="queryAboutTable8">
+                    <summary>
+                        <div class="details__description">Campus: </div>
+                        <div class="details__container">
+                            <p>8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos.</p>
+                        </div>
                     </summary>
                     <div class="report__container">
                         <div class="report__card">
@@ -48,196 +63,13 @@
                                     <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
                                 </div>
                             </div>
-                            <!-- <div class="card__footer">
+                            <div class="card__footer">
                                 <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
+                            </div> 
                         </div>
                         
                     </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-                <details>
-                    <summary>
-                        <div>Sort by:</div>
-                        <div>Urgency: High to Low</div>
-                    </summary>
-                    <div class="report__container">
-                        <div class="report__card">
-                            <div class="card__title">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div>
-                            <div class="card__body">
-                                <div class="body__marck">
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                    <p><b>Welcome to my figma community file: </b>You can follow me on twitter here</p>
-                                </div>
-                            </div>
-                            <!-- <div class="card__footer">
-                                <div>Hello, I’m Isaac Fayemi</div>
-                            </div> -->
-                        </div>
-                        
-                    </div>
-                </details>
-
+                </details> -->
             </article>
         </section>
     </main>
