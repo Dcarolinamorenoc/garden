@@ -26,8 +26,8 @@ import{
 
 // console.log(await getAllSpanishClientsNames());
 // console.log(await getClientsInMadridWithSalesRep11Or30())
-console.log ( await getClientsEmploy ());
-// console.log (await getEmployeesCode ());
+// console.log ( await getClientsEmploy ());
+console.log (await getEmployeesCode ());
 
 
 
