@@ -97,19 +97,54 @@ export const getAllEmploy = async() =>{
 }
 //9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 
-export const getAll = async()=>{
+export const getAll = async () => {
     let dataEmployees = await getAllEmploy();
     for (let i = 0; i < dataEmployees.length; i++) {
-        let {code_boss} = dataEmployees[i]
+        let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
         let listBoss = [];
-        if(!code_boss) continue 
-        do{
-            let searchedBoss = async() => await getEmployByCode(code_boss)
-            let [boos] = await searchedBoss()
-            code_boss = boos.code_boss
-            listBoss.push(boos)
-        }while(code_boss)
-        dataEmployees[i].code_boss = listBoss;
+        if (!code_boss) continue;
+        do {
+            let [boss] = await getEmployByCode(code_boss);
+            if (!boss) break;
+            listBoss.push(boss.name); // Almacenamos solo el nombre del jefe
+            code_boss = boss.code_boss;
+        } while (code_boss);
+        dataEmployees[i] = { name, lastname1, lastname2, code_boss: listBoss };
     }
-    return dataEmployees;
-}
+    return dataEmployees.map(({ name, lastname1, lastname2, code_boss }) => ({ name, lastname1, lastname2, code_boss }));
+};
+
+// 8.Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
+
+export const getEmployeesWithBoss = async () => {
+    // Obtiene la lista de empleados del servidor
+    let res = await fetch("http://localhost:5502/employees");
+    let employees = await res.json();
+
+    // Función para obtener el nombre del jefe a partir del código del jefe
+    const getBossName = (bossCode) => {
+        if (bossCode === null) return null; // Si el código del jefe es nulo, devuelve nulo
+        const boss = employees.find(employee => employee.id === bossCode);
+        return boss ? `${boss.name} ${boss.lastname1} ${boss.lastname2}` : null;
+    };
+
+    // Itera sobre cada empleado para agregar el nombre del jefe
+    for (let i = 0; i < employees.length; i++) {
+        let {
+            name,
+            lastname1,
+            lastname2,
+            code_boss,
+            ...employUpdate
+        } = employees[i];
+
+        // Agrega el nombre del jefe al objeto del empleado
+        employUpdate.bossName = getBossName(code_boss);
+
+        // Actualiza el objeto del empleado en el array
+        employees[i] = employUpdate;
+    }
+
+    // Devuelve la lista de empleados con el nombre del jefe agregado
+    return employees;
+};
