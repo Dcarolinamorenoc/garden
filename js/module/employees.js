@@ -97,22 +97,30 @@ export const getAllEmploy = async() =>{
 }
 //9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 
+
 export const getEmployeesWithBossAndBossOfBoss = async () => {
     let dataEmployees = await getAllEmploy();
     for (let i = 0; i < dataEmployees.length; i++) {
         let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
-        let listBoss = [];
-        if (!code_boss) continue;
+        let bossNames = {};
+        let bossCount = 1;
+        let fullName = `${name} ${lastname1} ${lastname2}`; // Nombre completo del empleado
+        if (!code_boss) {
+            dataEmployees[i] = { fullName };
+            continue; // Pasar al siguiente empleado si no tiene jefe
+        }
         do {
             let [boss] = await getEmployByCode(code_boss);
             if (!boss) break;
-            listBoss.push(boss.name); // Almacenamos solo el nombre del jefe
+            bossNames[`code_boss${bossCount}`] = boss.name; // Almacena el nombre del jefe
             code_boss = boss.code_boss;
+            bossCount++;
         } while (code_boss);
-        dataEmployees[i] = { name, lastname1, lastname2, code_boss: listBoss };
+        dataEmployees[i] = { fullName, ...bossNames };
     }
-    return dataEmployees.map(({ name, lastname1, lastname2, code_boss }) => ({ name, lastname1, lastname2, code_boss }));
+    return dataEmployees;
 };
+
 
 // 8.Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
 
