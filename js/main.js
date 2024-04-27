@@ -21,7 +21,7 @@ import{
 
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
-console.log(await getEmployeesWithBossAndBossOfBoss());
+// console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 
@@ -34,6 +34,7 @@ import{
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
     getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
+    getDelayedOrdersPayPalClients 
 } from "./module/clients.js";
 
 // console.log(await getAllClientsFuenlabrada ());
@@ -45,7 +46,7 @@ import{
 // console.log (await getClientsWithoutPayments ());
 // console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
-
+console.log (await getDelayedOrdersPayPalClients ());
 
 
 import{

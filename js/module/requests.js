@@ -110,3 +110,11 @@ export const getOrdersDeliveredInJanuary = async () =>{
     })
     return dataUpdate;
 }
+
+
+
+export const getAllPaymentsStatus = async() =>{
+    let res = await fetch("http://localhost:5508/requests?status=Pendiente");
+    let data = await res.json();
+    return data;
+}

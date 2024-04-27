@@ -54,6 +54,10 @@ import {
     getPaymentsWithSales
 } from "./payments.js"
 
+import{
+    getAllPaymentsStatus
+} from "./requests.js"
+
 
 
 // -------------------------------------------------------
@@ -509,3 +513,33 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
 //     });
 //     return dataUpdate
 // }
+
+
+
+
+export const getDelayedOrdersPayPalClients = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+
+    for (let i = 0; i < clients.length; i++) {
+        let client = clients[i];
+
+        let payments = await getAllPaymentsStatus(client.code_client); // Suponiendo que la función getAllPaymentsStatus acepta un código de cliente como parámetro
+
+
+        for (let j = 0; j < payments.length; j++) {
+            let payment = payments[j];
+
+            let dataUpdate = {
+                
+                ...client,
+                name_employee: `${payment.name} ${payment.lastname1} ${payment.lastname2}`,
+                status: payment.status, // Asegúrate de que status sea la propiedad correcta
+            };
+
+            clients[i] = dataUpdate;
+        }
+    }
+
+    return clients;
+};
