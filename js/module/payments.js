@@ -52,3 +52,12 @@ export const getAllUniquePaymentMethods = async () => {
     let dataPayment = Array.from(dataUpdate);
     return dataPayment;
 }
+
+
+
+
+export const getPaymentsWithSales = async (code) => {
+    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}
