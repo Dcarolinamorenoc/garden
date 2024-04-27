@@ -23,7 +23,8 @@ import{
     getClientsEmploy,
     getEmployeesCode,
     getClientsWithSalesRepresentatives,
-    getClientsWithoutPayments
+    getClientsWithoutPayments,
+    getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity
 } from "./module/clients.js";
 
 // console.log(await getAllSpanishClientsNames());
@@ -31,7 +32,8 @@ import{
 // console.log ( await getClientsEmploy ());
 // console.log (await getEmployeesCode ());
 // console.log (await getClientsWithSalesRepresentatives())
-console.log (await getClientsWithoutPayments ());
+// console.log (await getClientsWithoutPayments ());
+console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
 
 
 

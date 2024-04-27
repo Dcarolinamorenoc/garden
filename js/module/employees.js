@@ -79,6 +79,7 @@ export const getEmployeeData = async (code) => {
 
 // 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 // 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
+// 4.Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getEmployeesSales = async (code) => {
     let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);

@@ -40,6 +40,8 @@ export const getAllOfficesFromSpainCityAndMovil =  async() =>{
 
 
 // Obtener la informacion de una oficina por su codigo
+// 4.Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+// 7.Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getOfficesByCode = async(code) =>{
     let res = await fetch(`http://localhost:5504/offices?code_office=${code}`);
