@@ -56,6 +56,11 @@ export const getAllUniquePaymentMethods = async () => {
 
 
 
+// -------------------------------------------------------------------
+
+// Consultas multitabla (Composición interna)
+
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 export const getPaymentsWithSales = async (code) => {
     let res = await fetch(`http://localhost:5505/payments?code_client=${code}`);
     let dataClients = await res.json();

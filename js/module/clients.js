@@ -55,6 +55,9 @@ import {
 } from "./payments.js"
 
 
+
+// -------------------------------------------------------
+
 // Consultas multitabla (Composición interna)
 
 // 7. Devuelve el nombre de los clientes y el nombre de sus representantes 
@@ -214,6 +217,7 @@ export const getClientsWithSalesRepresentatives = async () => {
         if (pay) {
             let [employ] = await getEmployeesSales(code_employee_sales_manager);
             let {
+                client_code,
                 extension,
                 email,
                 code_boss,
@@ -228,6 +232,7 @@ export const getClientsWithSalesRepresentatives = async () => {
             } = employ;
 
             let {
+                code_client,
                 payment: paymentClients,
                 id_transaction: transactionClients,
                 date_payment,
@@ -248,3 +253,6 @@ export const getClientsWithSalesRepresentatives = async () => {
     }
     return clientsWithPayments;
 };
+
+// 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
+

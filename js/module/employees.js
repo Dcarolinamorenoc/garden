@@ -69,11 +69,15 @@ export const getEmployByCode = async(code) =>{
     return dataClients;
 }
 
+// 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
 export const getEmployeeData = async (code) => {
     let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
+
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getEmployeesSales = async (code) => {
     let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
