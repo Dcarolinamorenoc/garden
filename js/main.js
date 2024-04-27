@@ -14,12 +14,13 @@ import{
     getAllNonSalesRepresentativeEmployees,
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
-    getAll
+    getEmployeesWithBossAndBossOfBoss
+    
 } from "./module/employees.js";
 
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
-console.log(await getAll());
+console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 
 

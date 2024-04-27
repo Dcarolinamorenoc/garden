@@ -97,7 +97,7 @@ export const getAllEmploy = async() =>{
 }
 //9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 
-export const getAll = async () => {
+export const getEmployeesWithBossAndBossOfBoss = async () => {
     let dataEmployees = await getAllEmploy();
     for (let i = 0; i < dataEmployees.length; i++) {
         let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
