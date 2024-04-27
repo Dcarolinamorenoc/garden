@@ -62,47 +62,47 @@ export const getOfficesByCode = async(code) =>{
 // Fuenlambra es un municipio y una ciudad española que forma parte de la Comunidad de Madrid. Se encuentra dentro del área metropolitana de Madrid y está situada a diecisiete kilómetros al suroeste de la capital.​
 
 
-// export const getOfficesWithClientsInFuenlabrada = async () => {
-//     let res = await fetch("http://localhost:5504/offices?city=Fuenlabrada");
-//     let offices = await res.json();
+export const getOfficesWithClientsInFuenlabrada = async () => {
+    let res = await fetch("http://localhost:5504/offices?city=Fuenlabrada");
+    let offices = await res.json();
     
-//     for (let i = 0; i < offices.length; i++) {
-//         let {
-//             country: countryOffice,
-//             region: regionOffice,
-//             postal_code: postal_codeOffice,
-//             movil,
-//             address1: address1Office,
-//             address2: address2Office,
-//             id: idOffice,
-//             city,
-//             ...officeUpdate
-//         } = offices[i];
+    for (let i = 0; i < offices.length; i++) {
+        let {
+            country: countryOffice,
+            region: regionOffice,
+            postal_code: postal_codeOffice,
+            movil,
+            address1: address1Office,
+            address2: address2Office,
+            id: idOffice,
+            city,
+            ...officeUpdate
+        } = offices[i];
 
-//         if (city === "Fuenlabrada") {
-//             let [client] = await getClientsFromFuenlabrada(city);
+        if (city === "Fuenlabrada") {
+            let [client] = await getClientsFromFuenlabrada(city);
 
-//             if (client) {
-//                 let {
-//                     extension,
-//                     email,
-//                     code_boss,
-//                     position,
-//                     id: idEmploy,
-//                     name,
-//                     lastname1,
-//                     lastname2,
-//                     code_office,
-//                     employee_code,
-//                     ...employUpdate
-//                 } = client;
+            if (client) {
+                let {
+                    extension,
+                    email,
+                    code_boss,
+                    position,
+                    id: idEmploy,
+                    name,
+                    lastname1,
+                    lastname2,
+                    code_office,
+                    employee_code,
+                    ...employUpdate
+                } = client;
 
-//                 let data = { ...employUpdate, ...officeUpdate };
-//                 data.name_employee = `${name} ${lastname1} ${lastname2}`;
-//                 offices[i] = data;
-//             }
-//         }
-//     }
+                let data = { ...employUpdate, ...officeUpdate };
+                data.name_employee = `${name} ${lastname1} ${lastname2}`;
+                offices[i] = data;
+            }
+        }
+    }
     
-//     return offices;
-// };
+    return offices;
+};

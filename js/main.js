@@ -13,12 +13,13 @@ import {
 import{
     getAllNonSalesRepresentativeEmployees,
     getAllEmployeesWithBossAndCodeSeven,
-    getBossFullNameAndEmail
+    getBossFullNameAndEmail,
+    getAll
 } from "./module/employees.js";
 
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
-
+console.log(await getAll());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 
 
@@ -31,11 +32,9 @@ import{
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
     getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
-    getAllClientsFuenlabrada
 } from "./module/clients.js";
-console.log(await getAllClientsFuenlabrada ());
 
-
+// console.log(await getAllClientsFuenlabrada ());
 // console.log(await getAllSpanishClientsNames());
 // console.log(await getClientsInMadridWithSalesRep11Or30())
 // console.log ( await getClientsEmploy ());

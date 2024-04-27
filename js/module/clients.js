@@ -496,16 +496,16 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
 // 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
 // Fuenlambra es un municipio y una ciudad española que forma parte de la Comunidad de Madrid. Se encuentra dentro del área metropolitana de Madrid y está situada a diecisiete kilómetros al suroeste de la capital.​
 
-export const getAllClientsFuenlabrada = async () => {
-    let res = await fetch("http://localhost:5501/clients?city=Fuenlabrada")
-    let data = await res.json()
-    let dataUpdate = []
-    data.forEach(val =>{
-        dataUpdate.push({
-            nombre_cliente: val.client_name,
-            codigo_cliente: val.client_code,
-            ciudad: val.city
-        })
-    });
-    return dataUpdate
-}
+// export const getAllClientsFuenlabrada = async () => {
+//     let res = await fetch("http://localhost:5501/clients?city=Fuenlabrada")
+//     let data = await res.json()
+//     let dataUpdate = []
+//     data.forEach(val =>{
+//         dataUpdate.push({
+//             nombre_cliente: val.client_name,
+//             codigo_cliente: val.client_code,
+//             ciudad: val.city
+//         })
+//     });
+//     return dataUpdate
+// }
