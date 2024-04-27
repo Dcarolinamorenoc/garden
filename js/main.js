@@ -1,9 +1,14 @@
 import {
     getAllOfficesCodeAndCity, 
-    getAllOfficesFromSpainCityAndMovil
+    getAllOfficesFromSpainCityAndMovil,
+    getOfficesWithClientsInFuenlabrada 
+
 } from "./module/offices.js";
 
+// console.log(await getAllOfficesCodeAndCity());
 // console.log(await getAllOfficesFromSpainCityAndMovil());
+// console.log(await getAllClientsFuenlabrada ());
+
 
 import{
     getAllNonSalesRepresentativeEmployees,
@@ -25,8 +30,11 @@ import{
     getClientsWithSalesRepresentatives,
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
-    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity
+    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
+    getAllClientsFuenlabrada
 } from "./module/clients.js";
+console.log(await getAllClientsFuenlabrada ());
+
 
 // console.log(await getAllSpanishClientsNames());
 // console.log(await getClientsInMadridWithSalesRep11Or30())
@@ -35,7 +43,7 @@ import{
 // console.log (await getClientsWithSalesRepresentatives())
 // console.log (await getClientsWithoutPayments ());
 // console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
-console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
+// console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
 
 
 
