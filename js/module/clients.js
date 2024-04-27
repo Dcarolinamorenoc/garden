@@ -517,6 +517,8 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
 
 
 
+// 10.Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+
 export const getDelayedOrdersPayPalClients = async () => {
     let res = await fetch("http://localhost:5501/clients");
     let clients = await res.json();
@@ -526,14 +528,11 @@ export const getDelayedOrdersPayPalClients = async () => {
 
         let payments = await getAllPaymentsStatus(client.code_client); // Suponiendo que la función getAllPaymentsStatus acepta un código de cliente como parámetro
 
-
         for (let j = 0; j < payments.length; j++) {
             let payment = payments[j];
 
             let dataUpdate = {
-                
-                ...client,
-                name_employee: `${payment.name} ${payment.lastname1} ${payment.lastname2}`,
+                client_name: client.client_name,
                 status: payment.status, // Asegúrate de que status sea la propiedad correcta
             };
 
