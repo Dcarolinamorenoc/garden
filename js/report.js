@@ -564,6 +564,38 @@ queryAboutTable2.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 3----------------------------------------------------------------
+
+import { getClientsWithoutPayments  } from "./module/clients.js";
+const queryAboutTable3 = document.querySelector("#queryAboutTable3");
+queryAboutTable3.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithoutPayments ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
 // -----------------------------Ejercicio 7----------------------------------------------------------------
 
 import { getClientsEmploy } from "./module/clients.js";

@@ -49,8 +49,8 @@ import{
 // console.log(await getClientsInMadridWithSalesRep11Or30())
 // console.log ( await getClientsEmploy ());
 // console.log (await getEmployeesCode ());
-console.log (await getClientsWithSalesRepresentatives())
-// console.log (await getClientsWithoutPayments ());
+// console.log (await getClientsWithSalesRepresentatives())
+console.log (await getClientsWithoutPayments ());
 // console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getDelayedOrdersPayPalClients ());
