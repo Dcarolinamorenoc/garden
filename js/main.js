@@ -80,8 +80,8 @@ import{
 
 
 // console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
-console.log (await getPaypalPayments2008OrderedDescending ())
-// console.log(await getAllUniquePaymentMethods());
+// console.log (await getPaypalPayments2008OrderedDescending ())
+console.log(await getAllUniquePaymentMethods());
 
 import{
     getOrnamentalProductsOver100StockByPrice,

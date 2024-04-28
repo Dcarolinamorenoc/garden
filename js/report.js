@@ -407,6 +407,36 @@ queryAboutTable013.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 14----------------------------------------------------------------
+
+import { getAllUniquePaymentMethods } from "./module/payments.js";
+const queryAboutTable014 = document.querySelector("#queryAboutTable014");
+queryAboutTable014.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable014.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllUniquePaymentMethods();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Payments</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Método de Pago: </b>${val}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
 // -----------------------------Segunda Parte----------------------------------------------------------------
 // -----------------------------Ejercicio 7----------------------------------------------------------------
 
