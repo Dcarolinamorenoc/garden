@@ -436,6 +436,35 @@ queryAboutTable014.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 15----------------------------------------------------------------
+
+import { getOrnamentalProductsOver100StockByPrice } from "./module/products.js";
+const queryAboutTable015 = document.querySelector("#queryAboutTable015");
+queryAboutTable015.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable015.children;
+    if (!report__container.innerHTML) {
+        let data = await getOrnamentalProductsOver100StockByPrice();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Productos</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Producto: </b>${val.name}</p>
+                            <p><b>Precio: </b>${val.price_sale}</p>
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
 
 // -----------------------------Segunda Parte----------------------------------------------------------------
 // -----------------------------Ejercicio 7----------------------------------------------------------------
