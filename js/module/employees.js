@@ -146,36 +146,52 @@ export const getEmployeesWithBossesAndBossesOfBosses = async () => {
 
 // Consultas multitabla (Composición externa)
 
+export const getEmployees = async () => {
+    let res = await fetch("http://localhost:5502/employees");
+    let dataOffices = await res.json();
+    return dataOffices;
+}
 
-import { getPaymentsWithSales } from './offices.js';
+
+
+import {
+    getOffices
+} from './offices.js';
 
 
 
 // 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
 
+// export const ListEmployeesWithoutAssociatedOffice = async () => {
+//     let employees = await getEmployees(); 
+//     let offices = await getOffices(); 
+//     let officeCodes = offices.map(office => office.code_office); 
+
+//     let employeesWithoutOffice = employees.filter(employee => !officeCodes.includes(employee.code_office));
+
+//     return employeesWithoutOffice;
+// };
 
 export const ListEmployeesWithoutAssociatedOffice = async () => {
-    let dataEmployees = await getPaymentsWithSales();
+    let employees = await getEmployees(); // Obtener datos de empleados
 
-    for (let i = 0; i < dataEmployees.length; i++) {
-        let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
-        let bossName = null;
-        
-        if (code_boss) {
-            let [boss] = await getEmployByCode(code_boss);
-            if (boss) {
-                bossName = boss.name;
-            }
-        }
 
-        dataEmployees[i] = { name, lastname1, lastname2, boss: bossName };
+    let offices = await getOffices(); // Obtener datos de oficinas
+
+    // Verificar si hay al menos una oficina asociada
+    if (offices.length > 0) {
+        let officeCodes = offices.map(office => office.code_office); // Obtener solo los códigos de oficina
+
+        // Filtrar empleados que no tienen una oficina asociada
+        let employeesWithoutOffice = employees.filter(employee => !officeCodes.includes(employee.code_office));
+        console.log("Empleados sin oficina:", employeesWithoutOffice); // Depuración: Verificar los empleados sin oficina
+
+        // Retornar la lista filtrada de empleados
+        return employeesWithoutOffice;
+    } else {
+        // Si no hay oficinas asociadas, retornar el mensaje
+        console.log("No hay oficinas asociadas");
+        return "There aren't any employ with a code_office";
     }
-
-    let offices = await getPaymentsWithSales(); // Obtener todas las oficinas
-    let officeCodes = offices.map(office => office.code_office); // Obtener solo los códigos de oficina
-
-    // Filtrar empleados que no tienen una oficina asociada
-    dataEmployees = dataEmployees.filter(employee => !officeCodes.includes(employee.code_office));
-
-    return dataEmployees;
 };
+

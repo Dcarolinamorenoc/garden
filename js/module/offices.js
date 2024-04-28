@@ -108,8 +108,9 @@ export const getOfficesWithClientsInFuenlabrada = async () => {
 };
 
 
-export const getPaymentsWithSales = async (code) => {
-    let res = await fetch(`http://localhost:5504/offices?code_offices=${code}`);
+export const getOffices = async () => {
+    let res = await fetch("http://localhost:5504/offices?code_office");
     let dataOffices = await res.json();
     return dataOffices;
 }
+
