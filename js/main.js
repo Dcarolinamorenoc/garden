@@ -23,7 +23,7 @@ import{
 
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
-// console.log(await getEmployeesWithBossAndBossOfBoss());
+console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
@@ -52,7 +52,7 @@ import{
 // console.log (await getClientsWithSalesRepresentatives())
 // console.log (await getClientsWithoutPayments ());
 // console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
-console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
+// console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getDelayedOrdersPayPalClients ());
 // console.log (await clientsNoPayments ());
 // console.log (await clientsNoOrder ());

@@ -661,6 +661,9 @@ queryAboutTable5.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 6----------------------------------------------------------------
+
+
 // -----------------------------Ejercicio 7----------------------------------------------------------------
 
 import { getClientsEmploy } from "./module/clients.js";
@@ -689,3 +692,32 @@ queryAboutTable7.addEventListener("click", async(e)=>{
         report__container.innerHTML = plantilla;
     }
 })
+
+// -----------------------------Ejercicio 8----------------------------------------------------------------
+
+import { getEmployeesWithBossesAndBossesOfBosses   } from "./module/employees.js";
+queryAboutTable8.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable8.children;
+    if (!report__container.innerHTML) {
+        let data = await getEmployeesWithBossesAndBossesOfBosses();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                            <p><b>Nombre jefe: </b>${val.boss}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
