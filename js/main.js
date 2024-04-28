@@ -51,8 +51,8 @@ import{
 // console.log (await getEmployeesCode ());
 // console.log (await getClientsWithSalesRepresentatives())
 // console.log (await getClientsWithoutPayments ());
-console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
-// console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
+// console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
+console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getDelayedOrdersPayPalClients ());
 // console.log (await clientsNoPayments ());
 // console.log (await clientsNoOrder ());

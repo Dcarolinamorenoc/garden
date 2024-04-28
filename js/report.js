@@ -628,6 +628,38 @@ queryAboutTable4.addEventListener("click", async (e) => {
     }
 });
 
+// -----------------------------Ejercicio 5----------------------------------------------------------------
+
+import { getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity   } from "./module/clients.js";
+const queryAboutTable5 = document.querySelector("#queryAboutTable5");
+queryAboutTable5.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable5.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity  ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Ciudad: </b>${val.city}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
 
 // -----------------------------Ejercicio 7----------------------------------------------------------------
 
