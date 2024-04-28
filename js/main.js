@@ -67,7 +67,7 @@ import{
 } from "./module/requests.js"
 
 // console.log (await getAllOrderStatuses());
-// console.log (await getAllDelayedOrders());
+console.log (await getAllDelayedOrders());
 // console.log(await getDelayedOrdersList());
 // console.log(await getRejectedOrders2009());
 // console.log(await getOrdersDeliveredInJanuary());
@@ -79,7 +79,7 @@ import{
 } from "./module/payments.js"
 
 
-console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
+// console.log (await getUniqueClientCodesWithPaymentsIn2008 ());
 // console.log (await getPaypalPayments2008OrderedDescending ())
 // console.log(await getAllUniquePaymentMethods());
 
