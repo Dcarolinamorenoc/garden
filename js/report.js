@@ -342,6 +342,38 @@ queryAboutTable011.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 12----------------------------------------------------------------
+
+import { getOrdersDeliveredInJanuary } from "./module/requests.js";
+const queryAboutTable012 = document.querySelector("#queryAboutTable012");
+queryAboutTable012.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable012.children;
+    if (!report__container.innerHTML) {
+        let data = await getOrdersDeliveredInJanuary();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Requests</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Pedido Codigo: </b>${val.Pedido_Codigo}</p>
+                        <p><b>Cliente Codigo: </b>${val.Cliente_Codigo}</p>
+                        <p><b>Fecha Esperada: </b>${val.Fecha_Esperada}</p>
+                        <p><b>Fecha Entrega: </b>${val.Fecha_Entrega}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
 
 // -----------------------------Segunda Parte----------------------------------------------------------------
 // -----------------------------Ejercicio 7----------------------------------------------------------------
