@@ -532,7 +532,36 @@ queryAboutTable1.addEventListener("click", async (e) => {
     }
 });
 
+// -----------------------------Ejercicio 2----------------------------------------------------------------
 
+import { getClientsWithSalesRepresentatives  } from "./module/clients.js";
+const queryAboutTable2 = document.querySelector("#queryAboutTable2");
+queryAboutTable2.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable2.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithSalesRepresentatives ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
 
 
 // -----------------------------Ejercicio 7----------------------------------------------------------------
