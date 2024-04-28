@@ -55,7 +55,8 @@ import {
 } from "./payments.js"
 
 import{
-    getAllPaymentsStatus
+    getAllPaymentsStatus,
+    getRequests
 } from "./requests.js"
 
 
@@ -543,6 +544,9 @@ export const getDelayedOrdersPayPalClients = async () => {
     return clients;
 };
 
+
+
+
 // -------------------------------------------------------
 
 // Consultas multitabla (Composición externa)
@@ -606,3 +610,38 @@ export const clientsNoPayments = async () => {
 };
 
 
+
+export const clientsNoOrder = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithoutOrder = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        // Obtener las solicitudes asociadas al cliente
+        let requests = await getRequests(client_code);
+
+        // Verificar si el cliente tiene solicitudes asociadas
+        if (requests.length === 0) {
+            clientsWithoutOrder.push(clientsUpdate);
+        }
+    }
+    return clientsWithoutOrder;
+};

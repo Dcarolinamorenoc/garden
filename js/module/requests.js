@@ -120,3 +120,14 @@ export const getAllPaymentsStatus = async() =>{
     let data = await res.json();
     return data;
 }
+
+
+// -------------------------------------------------------
+
+// Consultas multitabla (Composición externa)
+
+export const getRequests = async (code) => {
+    let res = await fetch(`http://localhost:5508/requests?code_client=${code}`);
+    let dataRequests = await res.json();
+    return dataRequests;
+}
