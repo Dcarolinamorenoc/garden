@@ -721,3 +721,33 @@ queryAboutTable8.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+// -----------------------------Ejercicio 9----------------------------------------------------------------
+
+import { getDelayedOrdersPayPalClients} from "./module/clients.js";
+const queryAboutTable10 = document.querySelector("#queryAboutTable10");
+queryAboutTable10.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable10.children
+    if(!report__container.innerHTML){
+        let data = await getDelayedOrdersPayPalClients();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>${val.client_name}</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Nombre del cliente: </b>${val.client_name}</p>
+                        <p><b>Estado: </b>${val.status}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
