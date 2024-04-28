@@ -139,3 +139,43 @@ export const getEmployeesWithBossesAndBossesOfBosses = async () => {
         }
         return dataEmployees;
     };
+
+
+
+// -------------------------------------------------------
+
+// Consultas multitabla (Composición externa)
+
+
+import { getPaymentsWithSales } from './offices.js';
+
+
+
+// 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
+
+
+export const ListEmployeesWithoutAssociatedOffice = async () => {
+    let dataEmployees = await getPaymentsWithSales();
+
+    for (let i = 0; i < dataEmployees.length; i++) {
+        let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
+        let bossName = null;
+        
+        if (code_boss) {
+            let [boss] = await getEmployByCode(code_boss);
+            if (boss) {
+                bossName = boss.name;
+            }
+        }
+
+        dataEmployees[i] = { name, lastname1, lastname2, boss: bossName };
+    }
+
+    let offices = await getPaymentsWithSales(); // Obtener todas las oficinas
+    let officeCodes = offices.map(office => office.code_office); // Obtener solo los códigos de oficina
+
+    // Filtrar empleados que no tienen una oficina asociada
+    dataEmployees = dataEmployees.filter(employee => !officeCodes.includes(employee.code_office));
+
+    return dataEmployees;
+};

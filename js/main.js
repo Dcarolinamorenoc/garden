@@ -15,7 +15,8 @@ import{
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
     getEmployeesWithBossAndBossOfBoss,
-    getEmployeesWithBossesAndBossesOfBosses
+    getEmployeesWithBossesAndBossesOfBosses,
+    ListEmployeesWithoutAssociatedOffice
     
 } from "./module/employees.js";
 
@@ -24,6 +25,7 @@ import{
 // console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
+console.log (await ListEmployeesWithoutAssociatedOffice ());
 
 import{
     getAllSpanishClientsNames,
@@ -52,7 +54,7 @@ import{
 // console.log (await getDelayedOrdersPayPalClients ());
 // console.log (await clientsNoPayments ());
 // console.log (await clientsNoOrder ());
-console.log (await clientsNoPaymentsAndNoOrder ())
+// console.log (await clientsNoPaymentsAndNoOrder ());
 
 import{
     getAllOrderStatuses,
