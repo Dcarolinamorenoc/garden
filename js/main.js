@@ -46,7 +46,7 @@ import{
 
 // console.log(await getAllClientsFuenlabrada ());
 // console.log(await getAllSpanishClientsNames());
-// console.log(await getClientsInMadridWithSalesRep11Or30())
+console.log(await getClientsInMadridWithSalesRep11Or30())
 // console.log ( await getClientsEmploy ());
 // console.log (await getEmployeesCode ());
 // console.log (await getClientsWithSalesRepresentatives())
@@ -88,4 +88,4 @@ import{
 
 } from "./module/products.js"
 
-console.log(await getOrnamentalProductsOver100StockByPrice ());
+// console.log(await getOrnamentalProductsOver100StockByPrice ());
