@@ -374,6 +374,38 @@ queryAboutTable012.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 13----------------------------------------------------------------
+
+import { getPaypalPayments2008OrderedDescending } from "./module/payments.js";
+const queryAboutTable013 = document.querySelector("#queryAboutTable013");
+queryAboutTable013.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable013.children;
+    if (!report__container.innerHTML) {
+        let data = await getPaypalPayments2008OrderedDescending();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Payments</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Codigo cliente: </b>${val.code_client}</p>
+                            <p><b>Payments: </b>${val.payment}</p>
+                            <p><b>ID Transaccion: </b>${val.transaction_id}</p>
+                            <p><b>Total: </b>${val.total}</p>
+                            <p><b>ID: </b>${val.id}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
 
 // -----------------------------Segunda Parte----------------------------------------------------------------
 // -----------------------------Ejercicio 7----------------------------------------------------------------
