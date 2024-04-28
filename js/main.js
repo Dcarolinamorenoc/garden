@@ -24,7 +24,7 @@ import{
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
 // console.log(await getEmployeesWithBossAndBossOfBoss());
-console.log (await getAllNonSalesRepresentativeEmployees ())
+// console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
 // console.log (await ListEmployeesWithoutAssociatedClient ());
@@ -66,7 +66,7 @@ import{
     getOrdersDeliveredInJanuary
 } from "./module/requests.js"
 
-// console.log (await getAllOrderStatuses());
+console.log (await getAllOrderStatuses());
 // console.log (await getAllDelayedOrders());
 // console.log(await getDelayedOrdersList());
 // console.log(await getRejectedOrders2009());

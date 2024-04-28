@@ -134,7 +134,7 @@ const queryAboutTable05 = document.querySelector("#queryAboutTable05");
 queryAboutTable05.addEventListener("click", async (e) => {
     let [, report__container] = queryAboutTable05.children;
     if (!report__container.innerHTML) {
-        let data = await getAllNonSalesRepresentativeEmployees(); // Corregido el nombre de la función
+        let data = await getAllNonSalesRepresentativeEmployees(); 
         let plantilla = "";
         console.log(data);
         data.forEach(val => {
@@ -186,6 +186,34 @@ queryAboutTable06.addEventListener("click", async(e)=>{
     }
 })
 
+
+// -----------------------------Ejercicio 7----------------------------------------------------------------
+
+import { getAllOrderStatuses } from "./module/requests.js";
+const queryAboutTable07 = document.querySelector("#queryAboutTable07");
+queryAboutTable07.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable07.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllOrderStatuses();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Estados de Pedido</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Estado: </b>${val}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
 
 
 // -----------------------------Segunda Parte----------------------------------------------------------------
