@@ -127,7 +127,35 @@ queryAboutTable04.addEventListener("click", async(e)=>{
 })
 
 
+// -----------------------------Ejercicio 5----------------------------------------------------------------
 
+import { getAllNonSalesRepresentativeEmployees } from "./module/employees.js";
+const queryAboutTable05 = document.querySelector("#queryAboutTable05");
+queryAboutTable05.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable05.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllNonSalesRepresentativeEmployees(); // Corregido el nombre de la función
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Empleados</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                        <p><b>Apellidos: </b>${val.apellidos}</p>
+                        <p><b>Puesto: </b>${val.puesto}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
 
 
 
