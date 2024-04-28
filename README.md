@@ -67,7 +67,7 @@ Resuelva todas las consultas utilizando la sintaxis de `SQL1` y `SQL2`. Las cons
 
 -----------------------------------------------------------------------
 
-### 1.4.6 Consultas multitabla (Composición externa)
+###Consultas multitabla (Composición externa)
 
 Resuelva todas las consultas utilizando las cláusulas `LEFT JOIN`, `RIGHT JOIN`, `NATURAL LEFT JOIN` y `NATURAL RIGHT JOIN`.
 
