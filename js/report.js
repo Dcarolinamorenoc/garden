@@ -158,6 +158,35 @@ queryAboutTable05.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 6----------------------------------------------------------------
+
+import { getAllSpanishClientsNames } from "./module/clients.js";
+const queryAboutTable06 = document.querySelector("#queryAboutTable06");
+queryAboutTable06.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable06.children
+    if(!report__container.innerHTML){
+        let data = await getAllSpanishClientsNames();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Clientes</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+
 
 // -----------------------------Segunda Parte----------------------------------------------------------------
 // -----------------------------Ejercicio 7----------------------------------------------------------------
