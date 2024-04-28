@@ -67,9 +67,9 @@ queryAboutTable02.addEventListener("click", async(e)=>{
 // -----------------------------Ejercicio 3----------------------------------------------------------------
 
 import { getAllEmployeesWithBossAndCodeSeven } from "./module/employees.js";
-const queryAboutTable02 = document.querySelector("#queryAboutTable02");
-queryAboutTable02.addEventListener("click", async(e)=>{
-    let [,report__container] = queryAboutTable02.children
+const queryAboutTable03 = document.querySelector("#queryAboutTable03");
+queryAboutTable03.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable03.children
     if(!report__container.innerHTML){
         let data = await getAllEmployeesWithBossAndCodeSeven();
         let plantilla = "";
@@ -78,13 +78,13 @@ queryAboutTable02.addEventListener("click", async(e)=>{
             plantilla += `
                 <div class="report__card">
                 <div class="card__title">
-                    <div>Oficinas</div>
+                    <div>Empleados</div>
                 </div>
                 <div class="card__body">
                     <div class="body__marck">
-                        <p><b>ID: </b>${val.id}</p>
-                        <p><b>Ciudad: </b>${val.ciudad}</p>
-                        <p><b>Telefono: </b>${val.telefono}</p>
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                        <p><b>Apellidos: </b>${val.apellidos}</p>
+                        <p><b>Email: </b>${val.email}</p>
                     </div>
                 </div>
             </div>
