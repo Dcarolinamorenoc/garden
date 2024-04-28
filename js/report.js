@@ -216,6 +216,37 @@ queryAboutTable07.addEventListener("click", async (e) => {
 });
 
 
+
+// -----------------------------Ejercicio 8----------------------------------------------------------------
+
+import { getUniqueClientCodesWithPaymentsIn2008 } from "./module/payments.js";
+const queryAboutTable08 = document.querySelector("#queryAboutTable08");
+queryAboutTable08.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable08.children;
+    if (!report__container.innerHTML) {
+        let data = await getUniqueClientCodesWithPaymentsIn2008();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Payments</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Codigo: </b>${val.codigo}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
 // -----------------------------Segunda Parte----------------------------------------------------------------
 // -----------------------------Ejercicio 7----------------------------------------------------------------
 
