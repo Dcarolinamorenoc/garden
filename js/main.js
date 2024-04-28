@@ -5,7 +5,7 @@ import {
 
 } from "./module/offices.js";
 
-// console.log(await getAllOfficesCodeAndCity());
+console.log(await getAllOfficesCodeAndCity());
 // console.log(await getAllOfficesFromSpainCityAndMovil());
 // console.log(await getAllClientsFuenlabrada ());
 
@@ -27,7 +27,7 @@ import{
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
-console.log (await ListEmployeesWithoutAssociatedClient ());
+// console.log (await ListEmployeesWithoutAssociatedClient ());
 
 import{
     getAllSpanishClientsNames,
