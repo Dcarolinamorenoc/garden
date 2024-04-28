@@ -610,6 +610,8 @@ export const clientsNoPayments = async () => {
 };
 
 
+// 2.Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
+
 
 export const clientsNoOrder = async () => {
     let res = await fetch("http://localhost:5501/clients");
@@ -644,4 +646,25 @@ export const clientsNoOrder = async () => {
         }
     }
     return clientsWithoutOrder;
+};
+
+
+// 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
+
+export const clientsNoPaymentsAndNoOrder = async () => {
+    // Obtener clientes sin pagos
+    const clientsWithoutPayments = await clientsNoPayments();
+
+    // Obtener clientes sin pedidos
+    const clientsWithoutOrders = await clientsNoOrder();
+
+    // Combinar las listas de clientes sin pagos y sin pedidos
+    const combinedClientsList = [...clientsWithoutPayments, ...clientsWithoutOrders];
+
+    // Eliminar duplicados basados en el nombre del cliente
+    const uniqueClientsList = combinedClientsList.filter((client, index, self) =>
+        index === self.findIndex(c => c.client_name === client.client_name)
+    );
+
+    return uniqueClientsList;
 };
