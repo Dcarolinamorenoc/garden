@@ -668,3 +668,12 @@ export const clientsNoPaymentsAndNoOrder = async () => {
 
     return uniqueClientsList;
 };
+
+
+
+
+export const getClientsOk = async () => {
+    let res = await fetch("http://localhost:5501/clients?code_employee_sales_manager");
+    let dataOffices = await res.json();
+    return dataOffices;
+}

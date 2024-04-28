@@ -16,7 +16,8 @@ import{
     getBossFullNameAndEmail,
     getEmployeesWithBossAndBossOfBoss,
     getEmployeesWithBossesAndBossesOfBosses,
-    ListEmployeesWithoutAssociatedOffice
+    ListEmployeesWithoutAssociatedOffice,
+    ListEmployeesWithoutAssociatedClient
     
 } from "./module/employees.js";
 
@@ -25,7 +26,8 @@ import{
 // console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
-console.log (await ListEmployeesWithoutAssociatedOffice ());
+// console.log (await ListEmployeesWithoutAssociatedOffice ());
+console.log (await ListEmployeesWithoutAssociatedClient ());
 
 import{
     getAllSpanishClientsNames,
