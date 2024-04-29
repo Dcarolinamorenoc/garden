@@ -663,6 +663,36 @@ queryAboutTable5.addEventListener("click", async (e) => {
 
 // -----------------------------Ejercicio 6----------------------------------------------------------------
 
+import { getOfficesClientsInFuenlabrada } from "./module/clients.js";
+const queryAboutTable6 = document.querySelector("#queryAboutTable6");
+queryAboutTable6.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable6.children
+    if(!report__container.innerHTML){
+        let data = await getOfficesClientsInFuenlabrada();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                <div>Oficinas</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Codigo: </b>${val.codigo}</p>
+                        <p><b>Direccion 1: </b>${val.direccion1}</p>
+                        <p><b>Direccion 2: </b>${val.direccion2}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+
+
 
 // -----------------------------Ejercicio 7----------------------------------------------------------------
 

@@ -505,7 +505,8 @@ export const getOfficesClientsInFuenlabrada = async() => {
                     if(employees.code_office === offices.code_office) {
                         dataUpdate.push({
                             codigo: clientes.code_employee_sales_manager,
-                            direccion: offices.address1 
+                            direccion1: offices.address1,
+                            direccion2: offices.address2
                         })
                     }
                 }
