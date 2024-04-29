@@ -41,7 +41,8 @@ import{
     getDelayedOrdersPayPalClients,
     clientsNoPayments,
     clientsNoOrder,
-    clientsNoPaymentsAndNoOrder 
+    clientsNoPaymentsAndNoOrder,
+    getOfficesClientsInFuenlabrada 
 } from "./module/clients.js";
 
 // console.log(await getAllClientsFuenlabrada ());
@@ -53,10 +54,13 @@ import{
 // console.log (await getClientsWithoutPayments ());
 // console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
-console.log (await getDelayedOrdersPayPalClients ());
+// console.log (await getDelayedOrdersPayPalClients ());
 // console.log (await clientsNoPayments ());
 // console.log (await clientsNoOrder ());
 // console.log (await clientsNoPaymentsAndNoOrder ());
+console.log (await getOfficesClientsInFuenlabrada ());
+
+
 
 import{
     getAllOrderStatuses,

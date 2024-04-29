@@ -212,3 +212,9 @@ export const ListEmployeesWithoutAssociatedClient = async () => {
         return "";
     }
 };
+
+export const getEmployeesCodeOffice = async () => {
+    let res = await fetch(`http://localhost:5502/employees`)
+    let data = await res.json()
+    return data
+}

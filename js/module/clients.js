@@ -43,11 +43,13 @@ export const getClientsInMadridWithSalesRep11Or30 = async () => {
 import { 
     getEmployByCode,
     getEmployeeData,
-    getEmployeesSales
+    getEmployeesSales,
+    getEmployeesCodeOffice
 } from "./employees.js";
 
 import { 
-    getOfficesByCode
+    getOfficesByCode,
+    getAllOffices
 } from "./offices.js";
 
 import {
@@ -489,32 +491,30 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
 
 // 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
 
-// export const getClientsFromFuenlabrada = async (code) => {
-//     let res = await fetch(`http://localhost:5501/clients?city=${code}`);
-//     let dataClients = await res.json();
-//     return dataClients;
-// }
+export const getOfficesClientsInFuenlabrada = async() => {
+    let resClients = await fetch("http://localhost:5501/clients?city=Fuenlabrada");
+    let dataClients = await resClients.json();
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataOffices = await getAllOffices();
+    let dataUpdate = []
 
+    for (let clientes of dataClients) {
+        for (let employees of dataEmployees) {
+            if (clientes.code_employee_sales_manager === employees.employee_code){
+                for (let offices of dataOffices) {
+                    if(employees.code_office === offices.code_office) {
+                        dataUpdate.push({
+                            codigo: clientes.code_employee_sales_manager,
+                            direccion: offices.address1 
+                        })
+                    }
+                }
+            }
+        }
+    }
 
-
-
-// 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
-// Fuenlambra es un municipio y una ciudad española que forma parte de la Comunidad de Madrid. Se encuentra dentro del área metropolitana de Madrid y está situada a diecisiete kilómetros al suroeste de la capital.​
-
-// export const getAllClientsFuenlabrada = async () => {
-//     let res = await fetch("http://localhost:5501/clients?city=Fuenlabrada")
-//     let data = await res.json()
-//     let dataUpdate = []
-//     data.forEach(val =>{
-//         dataUpdate.push({
-//             nombre_cliente: val.client_name,
-//             codigo_cliente: val.client_code,
-//             ciudad: val.city
-//         })
-//     });
-//     return dataUpdate
-// }
-
+    return dataUpdate
+}
 
 
 
