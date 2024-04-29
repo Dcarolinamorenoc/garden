@@ -116,7 +116,7 @@ queryAboutTable04.addEventListener("click", async(e)=>{
                         <p><b>Nombre: </b>${val.nombre}</p>
                         <p><b>Apellidos: </b>${val.apellidos}</p>
                         <p><b>Email: </b>${val.email}</p>
-                        <p><b>Posicion: </b>${val.posicion}</p>
+                        <p><b>Posicion: </b>${val.position}</p>
                     </div>
                 </div>
             </div>
@@ -394,7 +394,7 @@ queryAboutTable013.addEventListener("click", async (e) => {
                         <div class="body__marck">
                             <p><b>Codigo cliente: </b>${val.code_client}</p>
                             <p><b>Payments: </b>${val.payment}</p>
-                            <p><b>ID Transaccion: </b>${val.transaction_id}</p>
+                            <p><b>ID Transaccion: </b>${val.id_transaction}</p>
                             <p><b>Total: </b>${val.total}</p>
                             <p><b>ID: </b>${val.id}</p>
                         </div>
@@ -684,6 +684,7 @@ queryAboutTable7.addEventListener("click", async(e)=>{
                     <div class="body__marck">
                         <p><b>Nombre del empleado: </b>${val.name_employee}</p>
                         <p><b>Ciudad: </b>${val.city}</p>
+                        <p><b>Cliente: </b>${val.client_name}</p>
                     </div>
                 </div>
             </div>
