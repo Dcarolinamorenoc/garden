@@ -755,53 +755,6 @@ queryAboutTable8.addEventListener("click", async (e) => {
 
 // -----------------------------Ejercicio 9----------------------------------------------------------------
 
-// import { getEmployeesWithBossAndBossOfBoss} from "./module/employees.js";
-// const queryAboutTable9 = document.querySelector("#queryAboutTable9");
-// queryAboutTable9.addEventListener("click", async(e)=>{
-//     let [,report__container] = queryAboutTable9.children
-//     if(!report__container.innerHTML){
-//         let data = await getEmployeesWithBossAndBossOfBoss();
-//         let plantilla = "";
-//         console.log(data);
-//         if (val.jefes == undefined){
-//             data.forEach(val => {
-//                 plantilla += `
-//                     <div class="report__card">
-//                     <div class="card__title">
-//                         <div>Empleado</div>
-//                     </div>
-//                     <div class="card__body">
-//                         <div class="body__marck">
-//                             <p><b>Nombre del Empleado: </b>${val.fullName} </p>
-//                             <p><b>Los jefes: </b>Marcos</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 `;
-//             });
-//             report__container.innerHTML = plantilla;
-//         } else {
-//             data.forEach(val => {
-//                 plantilla += `
-//                     <div class="report__card">
-//                     <div class="card__title">
-//                         <div>Empleado</div>
-//                     </div>
-//                     <div class="card__body">
-//                         <div class="body__marck">
-//                             <p><b>Nombre del Empleado: </b>${val.fullName} </p>
-//                             <p><b>Los jefes: </b>${val.jefes}</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 `;
-//             });
-//             report__container.innerHTML = plantilla;
-//         }
-//     }
-// })
-
-
 import { getEmployeesWithBossAndBossOfBoss } from "./module/employees.js";
 
 const queryAboutTable9 = document.querySelector("#queryAboutTable9");
@@ -858,6 +811,36 @@ queryAboutTable10.addEventListener("click", async(e)=>{
                     <div class="body__marck">
                         <p><b>Nombre del cliente: </b>${val.client_name}</p>
                         <p><b>Estado: </b>${val.status}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+
+// -----------------------------Ejercicio 11----------------------------------------------------------------
+
+import { lisOfProductRangesPurchasedByClient} from "./module/request_details.js";
+const queryAboutTable11 = document.querySelector("#queryAboutTable11");
+queryAboutTable11.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable11.children
+    if (!report__container.innerHTML) {
+        let data = await lisOfProductRangesPurchasedByClient();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Gama</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                    <p><b>Cliente: </b>${val.client_name}</p>
+                    <p><b>Gama: </b>${val.gama}</p>
                     </div>
                 </div>
             </div>
