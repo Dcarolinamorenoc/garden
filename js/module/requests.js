@@ -132,3 +132,9 @@ export const getRequests = async (code) => {
     return dataRequests;
 }
 
+
+export const getRequestByDetails = async (code) => {
+    let res = await fetch(`http://localhost:5508/requests?code_request=${code}`)
+    let data = await res.json();
+    return data
+}

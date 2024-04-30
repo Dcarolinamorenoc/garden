@@ -23,7 +23,7 @@ import{
 
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
-console.log(await getEmployeesWithBossAndBossOfBoss());
+// console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
@@ -94,3 +94,11 @@ import{
 } from "./module/products.js"
 
 // console.log(await getOrnamentalProductsOver100StockByPrice ());
+
+
+
+import {
+    lisOfProductRangesPurchasedByClient
+} from "./module/request_details.js"
+
+console.log (await lisOfProductRangesPurchasedByClient ());

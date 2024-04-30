@@ -547,6 +547,12 @@ export const getDelayedOrdersPayPalClients = async () => {
 
 
 
+export const getClientByCode = async (code) => {
+    let res = await fetch(`http://localhost:5501/clients?client_code=${code}`)
+    let dataClient = await res.json()
+    return dataClient
+}
+
 
 
 // -------------------------------------------------------
