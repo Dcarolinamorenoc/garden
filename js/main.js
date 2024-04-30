@@ -56,8 +56,8 @@ import{
 // console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getDelayedOrdersPayPalClients ());
 // console.log (await clientsNoPayments ());
-console.log (await clientsNoOrder ());
-// console.log (await clientsNoPaymentsAndNoOrder ());
+// console.log (await clientsNoOrder ());
+console.log (await clientsNoPaymentsAndNoOrder ());
 // console.log (await getOfficesClientsInFuenlabrada ());
 
 

@@ -911,3 +911,32 @@ queryAboutTable002.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+// -----------------------------Ejercicio 3----------------------------------------------------------------
+
+import { clientsNoPaymentsAndNoOrder } from "./module/clients.js";
+const queryAboutTable003 = document.querySelector("#queryAboutTable003");
+queryAboutTable003.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable003.children;
+    if (!report__container.innerHTML) {
+        let data = await clientsNoPaymentsAndNoOrder ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
