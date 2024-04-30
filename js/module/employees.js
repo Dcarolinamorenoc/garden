@@ -99,9 +99,8 @@ export const getEmployeesWithBossAndBossOfBoss = async () => {
     let dataEmployees = await getAllEmploy();
     for (let i = 0; i < dataEmployees.length; i++) {
         let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
-        let bossNames = {};
-        let bossCount = 1;
-        let fullName = `${name} ${lastname1} ${lastname2}`; // Nombre completo del empleado
+        let bossNames = [];
+        let fullName = `${name} ${lastname1} ${lastname2}`; 
         if (!code_boss) {
             dataEmployees[i] = { fullName };
             continue; // Pasar al siguiente empleado si no tiene jefe
@@ -109,11 +108,10 @@ export const getEmployeesWithBossAndBossOfBoss = async () => {
         do {
             let [boss] = await getEmployByCode(code_boss);
             if (!boss) break;
-            bossNames[`code_boss${bossCount}`] = boss.name; // Almacena el nombre del jefe
+            bossNames.push(boss.name); // Almacena el nombre del jefe en un array
             code_boss = boss.code_boss;
-            bossCount++;
         } while (code_boss);
-        dataEmployees[i] = { fullName, ...bossNames };
+        dataEmployees[i] = { fullName, jefes: bossNames.reverse() }; // Invertir el orden para que estén en orden ascendente
     }
     return dataEmployees;
 };

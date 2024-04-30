@@ -23,7 +23,7 @@ import{
 
 // console.log(await getAllEmployeesWithBossAndCodeSeven());
 // console.log(await getBossFullNameAndEmail());
-// console.log(await getEmployeesWithBossAndBossOfBoss());
+console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
@@ -42,7 +42,7 @@ import{
     clientsNoPayments,
     clientsNoOrder,
     clientsNoPaymentsAndNoOrder,
-    getOfficesClientsInFuenlabrada 
+    getOfficesClientsInFuenlabrada
 } from "./module/clients.js";
 
 // console.log(await getAllClientsFuenlabrada ());
@@ -58,7 +58,8 @@ import{
 // console.log (await clientsNoPayments ());
 // console.log (await clientsNoOrder ());
 // console.log (await clientsNoPaymentsAndNoOrder ());
-console.log (await getOfficesClientsInFuenlabrada ());
+// console.log (await getOfficesClientsInFuenlabrada ());
+
 
 
 

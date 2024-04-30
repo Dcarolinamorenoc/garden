@@ -753,8 +753,92 @@ queryAboutTable8.addEventListener("click", async (e) => {
     }
 });
 
-
 // -----------------------------Ejercicio 9----------------------------------------------------------------
+
+// import { getEmployeesWithBossAndBossOfBoss} from "./module/employees.js";
+// const queryAboutTable9 = document.querySelector("#queryAboutTable9");
+// queryAboutTable9.addEventListener("click", async(e)=>{
+//     let [,report__container] = queryAboutTable9.children
+//     if(!report__container.innerHTML){
+//         let data = await getEmployeesWithBossAndBossOfBoss();
+//         let plantilla = "";
+//         console.log(data);
+//         if (val.jefes == undefined){
+//             data.forEach(val => {
+//                 plantilla += `
+//                     <div class="report__card">
+//                     <div class="card__title">
+//                         <div>Empleado</div>
+//                     </div>
+//                     <div class="card__body">
+//                         <div class="body__marck">
+//                             <p><b>Nombre del Empleado: </b>${val.fullName} </p>
+//                             <p><b>Los jefes: </b>Marcos</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 `;
+//             });
+//             report__container.innerHTML = plantilla;
+//         } else {
+//             data.forEach(val => {
+//                 plantilla += `
+//                     <div class="report__card">
+//                     <div class="card__title">
+//                         <div>Empleado</div>
+//                     </div>
+//                     <div class="card__body">
+//                         <div class="body__marck">
+//                             <p><b>Nombre del Empleado: </b>${val.fullName} </p>
+//                             <p><b>Los jefes: </b>${val.jefes}</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 `;
+//             });
+//             report__container.innerHTML = plantilla;
+//         }
+//     }
+// })
+
+
+import { getEmployeesWithBossAndBossOfBoss } from "./module/employees.js";
+
+const queryAboutTable9 = document.querySelector("#queryAboutTable9");
+
+queryAboutTable9.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable9.children;
+
+    if (!report__container.innerHTML) {
+        let data = await getEmployeesWithBossAndBossOfBoss();
+        let plantilla = "";
+        console.log(data);
+
+        data.forEach(val => {
+            let jefesHtml = "";
+            if (val.jefes) {
+                jefesHtml = val.jefes.reverse().join(", "); // Revertir el array antes de unirlo en una cadena
+            }
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleado</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre del Empleado: </b>${val.fullName} </p>
+                            <p><b>Los jefes: </b>${jefesHtml}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        report__container.innerHTML = plantilla;
+    }
+});
+
+// -----------------------------Ejercicio 10----------------------------------------------------------------
 
 import { getDelayedOrdersPayPalClients} from "./module/clients.js";
 const queryAboutTable10 = document.querySelector("#queryAboutTable10");
