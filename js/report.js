@@ -849,3 +849,33 @@ queryAboutTable11.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 })
+
+
+
+// -----------------------------Tercera Parte----------------------------------------------------------------
+
+import { clientsNoPayments  } from "./module/clients.js";
+const queryAboutTable001 = document.querySelector("#queryAboutTable001");
+queryAboutTable001.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable001.children;
+    if (!report__container.innerHTML) {
+        let data = await clientsNoPayments ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});

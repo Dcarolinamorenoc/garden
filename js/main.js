@@ -55,7 +55,7 @@ import{
 // console.log (await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ());
 // console.log (await getDelayedOrdersPayPalClients ());
-// console.log (await clientsNoPayments ());
+console.log (await clientsNoPayments ());
 // console.log (await clientsNoOrder ());
 // console.log (await clientsNoPaymentsAndNoOrder ());
 // console.log (await getOfficesClientsInFuenlabrada ());
@@ -101,4 +101,4 @@ import {
     lisOfProductRangesPurchasedByClient
 } from "./module/request_details.js"
 
-console.log (await lisOfProductRangesPurchasedByClient ());
+// console.log (await lisOfProductRangesPurchasedByClient ());
