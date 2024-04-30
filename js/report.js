@@ -989,3 +989,32 @@ queryAboutTable004.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+// -----------------------------Ejercicio 5----------------------------------------------------------------
+
+import { ListEmployeesWithoutAssociatedClient } from "./module/employees.js";
+const queryAboutTable005 = document.querySelector("#queryAboutTable005");
+queryAboutTable005.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable005.children;
+    if (!report__container.innerHTML) {
+        let data = await ListEmployeesWithoutAssociatedClient();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});

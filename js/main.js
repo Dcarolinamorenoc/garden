@@ -26,8 +26,8 @@ import{
 // console.log(await getEmployeesWithBossAndBossOfBoss());
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
-console.log (await ListEmployeesWithoutAssociatedOffice ());
-// console.log (await ListEmployeesWithoutAssociatedClient ());
+// console.log (await ListEmployeesWithoutAssociatedOffice ());
+console.log (await ListEmployeesWithoutAssociatedClient ());
 
 import{
     getAllSpanishClientsNames,

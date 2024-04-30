@@ -193,21 +193,17 @@ export const ListEmployeesWithoutAssociatedOffice = async () => {
 
 import { getClientsOk } from './clients.js';
 
-
 export const ListEmployeesWithoutAssociatedClient = async () => {
-    let employees = await getEmployees(); 
+    let employees = await getEmployeesCodeOffice(); 
     let clients = await getClientsOk();
 
     if (clients.length > 0) {
         let clientEmployeeCodes = clients.map(client => client.code_employee_sales_manager); 
         let employeesWithoutClient = employees.filter(employee => !clientEmployeeCodes.includes(employee.employee_code));
 
-        employeesWithoutClient.forEach(employee => {
-            let { name, lastname1, lastname2 } = employee;
-            console.log(`name_employee = "${name} ${lastname1} ${lastname2}";`);
-        });
-        
-        return "";
+        return employeesWithoutClient;
+    } else {
+        return []; // Devolver una lista vacía si no hay clientes
     }
 };
 
