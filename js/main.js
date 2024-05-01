@@ -70,7 +70,7 @@ import{
 // console.log (await getOfficesClientsInFuenlabrada ());
 // console.log (await findClientsWithUnpaidOrders ());
 // console.log (await clientsWithOrder ());
-console.log (await clientsWithOrderNoPayments ());
+// console.log (await clientsWithOrderNoPayments ());
 
 
 import{
@@ -100,10 +100,13 @@ import{
 
 import{
     getOrnamentalProductsOver100StockByPrice,
+    productsNeverOrdered 
+
 
 } from "./module/products.js"
 
 // console.log(await getOrnamentalProductsOver100StockByPrice ());
+console.log (await productsNeverOrdered  ());
 
 
 
