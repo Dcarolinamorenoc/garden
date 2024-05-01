@@ -1050,6 +1050,57 @@ queryAboutTable006.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 7----------------------------------------------------------------
+
+import { ListEmployeesWithoutAssociatedOfficeAndClient } from "./module/employees.js";
+const queryAboutTable007 = document.querySelector("#queryAboutTable007");
+
+queryAboutTable007.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable007.children;
+
+    if (!report__container.innerHTML) {
+        let data = await ListEmployeesWithoutAssociatedOfficeAndClient();
+        console.log(data);
+
+        let plantilla = "";
+
+        if (data.length === 0) {
+            plantilla = `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleado</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p>No hay empleados sin oficina, Sin embargo si hay empleados que no tienen un cliente asociado.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            data.forEach(val => {
+                plantilla += `
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Empleado</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                                <p><b>Empleado sin Oficina: </b>${val.name}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
+
 
 // -----------------------------Ejercicio 12----------------------------------------------------------------
 
