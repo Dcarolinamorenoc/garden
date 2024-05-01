@@ -1020,6 +1020,8 @@ queryAboutTable005.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 6----------------------------------------------------------------
+
 import { listEmployeesWithoutAssociatedClientAndTheirOffices } from "./module/employees.js";
 const queryAboutTable006 = document.querySelector("#queryAboutTable006");
 queryAboutTable006.addEventListener("click", async (e) => {
@@ -1038,6 +1040,37 @@ queryAboutTable006.addEventListener("click", async (e) => {
                         <div class="body__marck">
                             <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
                             <p><b>Oficina: </b>${val.code_office} </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
+// -----------------------------Ejercicio 12----------------------------------------------------------------
+
+import { listEmployeesWithoutAssociatedClientAndTheirBosses } from "./module/employees.js";
+const queryAboutTable0012 = document.querySelector("#queryAboutTable0012");
+queryAboutTable0012.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable0012.children;
+    if (!report__container.innerHTML) {
+        let data = await listEmployeesWithoutAssociatedClientAndTheirBosses();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                            <p><b>Jefe: </b>${val.boss} </p>
                         </div>
                     </div>
                 </div>
