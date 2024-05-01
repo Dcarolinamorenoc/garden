@@ -193,6 +193,12 @@ export const ListEmployeesWithoutAssociatedOffice = async () => {
 
 import { getClientsOk } from './clients.js';
 
+export const getEmployeesCodeOffice = async () => {
+    let res = await fetch(`http://localhost:5502/employees`)
+    let data = await res.json()
+    return data
+}
+
 export const ListEmployeesWithoutAssociatedClient = async () => {
     let employees = await getEmployeesCodeOffice(); 
     let clients = await getClientsOk();
@@ -201,17 +207,17 @@ export const ListEmployeesWithoutAssociatedClient = async () => {
         let clientEmployeeCodes = clients.map(client => client.code_employee_sales_manager); 
         let employeesWithoutClient = employees.filter(employee => !clientEmployeeCodes.includes(employee.employee_code));
 
-        return employeesWithoutClient;
-    } else {
-        return []; // Devolver una lista vacía si no hay clientes
-    }
+        // Mapear los datos para devolver solo nombre, primer apellido y segundo apellido
+        let simplifiedData = employeesWithoutClient.map(employee => ({
+            name: employee.name,
+            lastname1: employee.lastname1,
+            lastname2: employee.lastname2
+        }));
+
+        return simplifiedData;
+    } 
 };
 
-export const getEmployeesCodeOffice = async () => {
-    let res = await fetch(`http://localhost:5502/employees`)
-    let data = await res.json()
-    return data
-}
 
 
 // 6. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan.
