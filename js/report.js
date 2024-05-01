@@ -1018,3 +1018,31 @@ queryAboutTable005.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+import { listEmployeesWithoutAssociatedClientAndTheirOffices } from "./module/employees.js";
+const queryAboutTable006 = document.querySelector("#queryAboutTable006");
+queryAboutTable006.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable006.children;
+    if (!report__container.innerHTML) {
+        let data = await listEmployeesWithoutAssociatedClientAndTheirOffices();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                            <p><b>Oficina: </b>${val.code_office} </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
