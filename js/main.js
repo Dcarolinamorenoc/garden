@@ -18,7 +18,8 @@ import{
     getEmployeesWithBossesAndBossesOfBosses,
     ListEmployeesWithoutAssociatedOffice,
     ListEmployeesWithoutAssociatedClient,
-    listEmployeesWithoutAssociatedClientAndTheirOffices 
+    listEmployeesWithoutAssociatedClientAndTheirOffices,
+    listEmployeesWithoutAssociatedClientAndTheirBosses 
     
 } from "./module/employees.js";
 
@@ -28,8 +29,11 @@ import{
 // console.log (await getAllNonSalesRepresentativeEmployees ())
 // console.log(await getEmployeesWithBossesAndBossesOfBosses());
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
-console.log (await ListEmployeesWithoutAssociatedClient ());
+// console.log (await ListEmployeesWithoutAssociatedClient ());
 // console.log (await listEmployeesWithoutAssociatedClientAndTheirOffices  ());
+console.log (await listEmployeesWithoutAssociatedClientAndTheirBosses ());
+
+
 
 import{
     getAllSpanishClientsNames,
