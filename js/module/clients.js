@@ -33,8 +33,6 @@ export const getClientsInMadridWithSalesRep11Or30 = async () => {
 
 
 
-
-
 // ------------------------------------------------------------------------------
 
 
@@ -685,3 +683,5 @@ export const getClientsOk = async () => {
     let dataOffices = await res.json();
     return dataOffices;
 }
+
+
