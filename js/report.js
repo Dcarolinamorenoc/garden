@@ -1102,6 +1102,56 @@ queryAboutTable007.addEventListener("click", async (e) => {
 
 
 
+// -----------------------------Ejercicio 11----------------------------------------------------------------
+
+
+import { clientsWithOrderNoPayments } from "./module/clients.js";
+
+const queryAboutTable0011 = document.querySelector("#queryAboutTable0011");
+queryAboutTable0011.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable0011.children;
+    if (!report__container.innerHTML) {
+        let data = await clientsWithOrderNoPayments();
+        let plantilla = "";
+
+        if (typeof data === "string") {
+            // Si la respuesta es una cadena, significa que no hay clientes con pedidos no pagados
+            plantilla = `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p>${data}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            
+            data.forEach(val => {
+                plantilla += `
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Cliente</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                                <p><b>Nombre: </b>${val.client_name}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
 // -----------------------------Ejercicio 12----------------------------------------------------------------
 
 import { listEmployeesWithoutAssociatedClientAndTheirBosses } from "./module/employees.js";
