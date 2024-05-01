@@ -100,14 +100,15 @@ import{
 
 import{
     getOrnamentalProductsOver100StockByPrice,
-    productsNeverOrdered 
+    productsNeverOrdered,
+    getAllProductsNeverOrderedWithDetails
 
 
 } from "./module/products.js"
 
 // console.log(await getOrnamentalProductsOver100StockByPrice ());
-console.log (await productsNeverOrdered  ());
-
+// console.log (await productsNeverOrdered  ());
+console.log (await getAllProductsNeverOrderedWithDetails ());
 
 
 import {
