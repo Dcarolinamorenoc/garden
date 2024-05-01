@@ -1100,6 +1100,37 @@ queryAboutTable007.addEventListener("click", async (e) => {
 
 
 
+// -----------------------------Ejercicio 8----------------------------------------------------------------
+
+import { productsNeverOrdered } from "./module/products.js";
+const queryAboutTable008 = document.querySelector("#queryAboutTable008");
+queryAboutTable008.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable008.children;
+    if (!report__container.innerHTML) {
+        let data = await productsNeverOrdered();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Productos</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Codigo Producto: </b>${val.code_product} </p>
+                            <p><b>Name: </b>${val.name} </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
 
 
 // -----------------------------Ejercicio 11----------------------------------------------------------------
