@@ -1119,7 +1119,7 @@ queryAboutTable008.addEventListener("click", async (e) => {
                     <div class="card__body">
                         <div class="body__marck">
                             <p><b>Codigo Producto: </b>${val.code_product} </p>
-                            <p><b>Name: </b>${val.name} </p>
+                            <p><b>Nombre: </b>${val.name} </p>
                         </div>
                     </div>
                 </div>
@@ -1130,7 +1130,36 @@ queryAboutTable008.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 9----------------------------------------------------------------
 
+import { getAllProductsNeverOrderedWithDetails } from "./module/products.js";
+const queryAboutTable009 = document.querySelector("#queryAboutTable009");
+queryAboutTable009.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable009.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllProductsNeverOrderedWithDetails();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Productos</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Codigo Producto: </b>${val.code_product} </p>
+                            <p><b>Name: </b>${val.name} </p>
+                            <p><b>Descripcion: </b>${val.description} </p>
+                            <p><b>Imagen: </b>${val.image} </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
 
 
 // -----------------------------Ejercicio 11----------------------------------------------------------------
