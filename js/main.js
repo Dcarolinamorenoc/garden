@@ -33,7 +33,7 @@ import{
 // console.log (await ListEmployeesWithoutAssociatedClient ());
 // console.log (await listEmployeesWithoutAssociatedClientAndTheirOffices  ());
 // console.log (await listEmployeesWithoutAssociatedClientAndTheirBosses ());
-console.log (await ListEmployeesWithoutAssociatedOfficeAndClient ());
+// console.log (await ListEmployeesWithoutAssociatedOfficeAndClient ());
 
 
 import{
@@ -49,7 +49,9 @@ import{
     clientsNoPayments,
     clientsNoOrder,
     clientsNoPaymentsAndNoOrder,
-    getOfficesClientsInFuenlabrada
+    getOfficesClientsInFuenlabrada,
+    clientsWithOrder,
+    clientsWithOrderNoPayments  
 } from "./module/clients.js";
 
 // console.log(await getAllClientsFuenlabrada ());
@@ -66,8 +68,9 @@ import{
 // console.log (await clientsNoOrder ());
 // console.log (await clientsNoPaymentsAndNoOrder ());
 // console.log (await getOfficesClientsInFuenlabrada ());
-
-
+// console.log (await findClientsWithUnpaidOrders ());
+// console.log (await clientsWithOrder ());
+console.log (await clientsWithOrderNoPayments ());
 
 
 import{

@@ -51,12 +51,14 @@ import {
 } from "./offices.js";
 
 import {
-    getPaymentsWithSales
+    getPaymentsWithSales,
+    getAllPayments
 } from "./payments.js"
 
 import{
     getAllPaymentsStatus,
-    getRequests
+    getRequests,
+    getAllRequests
 } from "./requests.js"
 
 
@@ -685,3 +687,86 @@ export const getClientsOk = async () => {
 }
 
 
+// 11. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
+
+
+// Devuelve un listado que muestre solamente los clientes que han realizado ningún pedido.
+export const clientsWithOrder = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithOrder = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        // Obtener las solicitudes asociadas al cliente
+        let requests = await getRequests(client_code);
+
+        // Verificar si el cliente tiene solicitudes asociadas
+        if (requests.length > 0) {
+            clientsWithOrder.push(clientsUpdate);
+        }
+    }
+    return clientsWithOrder;
+};
+
+// 11 solucion 
+
+export const clientsWithOrderNoPayments = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithOrderNoPayments = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        // Obtener las solicitudes asociadas al cliente
+        let requests = await getRequests(client_code);
+
+        // Obtener los pagos asociados al cliente
+        let [pay] = await getPaymentsWithSales(client_code);
+
+        // Verificar si el cliente tiene solicitudes asociadas pero no pagos
+        if (requests.length > 0 && !pay) {
+            clientsWithOrderNoPayments.push(clientsUpdate);
+        }
+    }
+
+    if (clientsWithOrderNoPayments.length === 0) {
+        return "No hay clientes que han realizado su pedido y no han pagado";
+    }
+
+    return clientsWithOrderNoPayments;
+};

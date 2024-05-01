@@ -138,3 +138,10 @@ export const getRequestByDetails = async (code) => {
     let data = await res.json();
     return data
 }
+
+
+export const getAllRequests = async () => {
+    let res = await fetch("http://localhost:5508/requests");
+    let data = await res.json();
+    return data;
+};

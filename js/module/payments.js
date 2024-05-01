@@ -68,3 +68,10 @@ export const getPaymentsWithSales = async (code) => {
     let dataClients = await res.json();
     return dataClients;
 }
+
+
+export const getAllPayments = async () => {
+    let res = await fetch("http://localhost:5505/payments");
+    let data = await res.json();
+    return data;
+};
