@@ -19,7 +19,8 @@ import{
     ListEmployeesWithoutAssociatedOffice,
     ListEmployeesWithoutAssociatedClient,
     listEmployeesWithoutAssociatedClientAndTheirOffices,
-    listEmployeesWithoutAssociatedClientAndTheirBosses 
+    listEmployeesWithoutAssociatedClientAndTheirBosses,
+    ListEmployeesWithoutAssociatedOfficeAndClient  
     
 } from "./module/employees.js";
 
@@ -31,8 +32,8 @@ import{
 // console.log (await ListEmployeesWithoutAssociatedOffice ());
 // console.log (await ListEmployeesWithoutAssociatedClient ());
 // console.log (await listEmployeesWithoutAssociatedClientAndTheirOffices  ());
-console.log (await listEmployeesWithoutAssociatedClientAndTheirBosses ());
-
+// console.log (await listEmployeesWithoutAssociatedClientAndTheirBosses ());
+console.log (await ListEmployeesWithoutAssociatedOfficeAndClient ());
 
 
 import{
