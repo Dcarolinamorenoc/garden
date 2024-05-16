@@ -11,9 +11,9 @@ body {
     background: var(--color3);
 }
 
-/* .main { */
+.main {
     /* background: red; */
-/* } */
+}
 
 .main__banner {
     height: 245px;
@@ -48,9 +48,9 @@ body {
     background: var(--color8);
     padding: 8px;
 }
-/* .main__report { */
+.main__report {
     /* background: blue; */
-/* } */
+}
 
 .report__user {
     /* background: green; */
@@ -111,109 +111,11 @@ body {
     /* background: violet; */
     margin-top: var(--layout-box-y);
     height: 290px;
-    
-}
-.report__details details{
-    margin-left: var(--layout-box-x);
-    margin-right: var(--layout-box-x);
-    margin-bottom: var(--layout-box-y);
-}
-/* .details__description{ */
-    /* background: red;  */
-    /* width: 80px; */
-/* } */
-.details__container{
-    width: 65%;
-    height: 50px;
-    white-space: nowrap;
-    overflow-x: scroll;
-    display: flex;
-    /* background: red; */
-    color: var(--color2);
-    align-items: center;
-}
-summary {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 15px;
-    font-weight: bold;
-    box-shadow: 0px 0px 10px var(--color7);
+    overflow-y: scroll;
 }
 
-summary::after {
-    content: '';
-    width: 40px;
-    height: 40px;
-    background: url('../storage/img/arrow.svg') no-repeat;
-    background-size: cover;
-    transition: 0.2s;
-}
-details[open]>summary::after {
-    transform: rotate(180deg);
-}
-summary::-webkit-details-marker {
-    display: none;
-}
-summary {
-    color: var(--color5);
-    border-radius: 5px;
-    background: var(--color8);
-}
-details[open] summary {
-    border-radius: 10px;
-}
-details {
-    /* background: red; */
-    border-radius: 5px;
-}
 .report__container{
-    height: 300px;
+    height: 220px;
     overflow-y: scroll;
     margin-top: 10px;
-}
-.report__card{
-    /* background: red; */
-    margin: 10px 0px 0px
-}
-.card__title{
-    background: var(--color2);
-    color: var(--color8);
-    font-family: "Roboto-Bold";
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-}
-.card__body{
-    background: var(--color8);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 10px 15px 10px;
-}
-.body__marck{
-    border: 1px solid var(--color6);
-    padding: 10px;
-}
-.card__body b{
-    color: var(--color5);
-}
-.card__body p{
-    margin: 10px 0;
-    color: var(--color6);
-}
-.card__footer{
-    background: var(--color2);
-    color: var(--color8);
-    font-family: "Roboto-Bold";
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
 }
