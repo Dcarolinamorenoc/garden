@@ -17,7 +17,8 @@ import {
 import {
     getAllOrderStatuses,
     getAllDelayedOrders,
-    getDelayedOrdersList
+    getDelayedOrdersList,
+    getRejectedOrders2009
 } from "../module/requests.js"
 
 import {
@@ -263,6 +264,29 @@ export class Mycard extends HTMLElement{
             });
         }
 
+        // 11.Devuelve un listado de todos los pedidos que fueron **rechazados** en `2009`.
+
+
+        async getRejectedOrders2009Design(){
+            let data = await getRejectedOrders2009();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Requests 4</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Pedido Codigo: </b>${val.Pedido_Codigo}</p>
+                            <p><b>Cliente Codigo: </b>${val.Cliente_Codigo}</p>
+                            <p><b>Fecha Esperada: </b>${val.Fecha_Esperada}</p>
+                            <p><b>Fecha Entrega: </b>${val.Fecha_Entrega}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
   
     static get observedAttributes() {
@@ -292,6 +316,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="requests_3") this.
         getDelayedOrdersListDesign()
+
+        if(name=="logic" && now=="requests_4") this.
+        getRejectedOrders2009Design()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()

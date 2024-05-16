@@ -1307,7 +1307,7 @@ btn.forEach(val =>{
 
                 <my-details logic="requests_3" text="10.Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada."></my-details>
 
-
+                <my-details logic="requests_4" text="11.Devuelve un listado de todos los pedidos que fueron **rechazados** en 2009."></my-details>
             `;
         }
 
