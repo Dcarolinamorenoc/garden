@@ -5,7 +5,8 @@ import {getAllOfficesCodeAndCity,
 
 
 import {
-    getAllEmployeesWithBossAndCodeSeven
+    getAllEmployeesWithBossAndCodeSeven,
+    getBossFullNameAndEmail
 } from "../module/employees.js"
 
 
@@ -90,6 +91,30 @@ export class Mycard extends HTMLElement{
     }
 
 
+    // 4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+
+    async getBossFullNameAndEmailDesign(){
+        let data = await getBossFullNameAndEmail();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Employees 2</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                         <p><b>Apellidos: </b>${val.apellidos}</p>
+                        <p><b>Email: </b>${val.email}</p>
+                        <p><b>Posicion: </b>${val.position}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+
   
     static get observedAttributes() {
         return ["logic"];
@@ -98,7 +123,9 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="offices_1") this.getAllOfficesCodeAndCityDesign() //1
         if(name=="logic" && now=="offices_2") this.getAllOfficesFromSpainCityAndMovilDesign() 
 
-        if(name=="logic" && now=="employees_1") this.getAllEmployeesWithBossAndCodeSevenDesign() 
+        if(name=="logic" && now=="employees_1") this.getAllEmployeesWithBossAndCodeSevenDesign()
+        
+        if(name=="logic" && now=="employees_2") this.getBossFullNameAndEmailDesign()
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }
