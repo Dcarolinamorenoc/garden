@@ -18,6 +18,10 @@ import {
     getAllOrderStatuses
 } from "../module/requests.js"
 
+import {
+    getUniqueClientCodesWithPaymentsIn2008
+} from "../module/payments.js"
+
 
 export class Mycard extends HTMLElement{
     constructor(){
@@ -188,6 +192,26 @@ export class Mycard extends HTMLElement{
             });
         }
 
+        // 8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos. Resuelva la consulta:
+
+        async getUniqueClientCodesWithPaymentsIn2008Design(){
+            let data = await getUniqueClientCodesWithPaymentsIn2008();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Payments 1</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Codigo: </b>${val.codigo}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
 
   
     static get observedAttributes() {
@@ -208,6 +232,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="requests_1") this.
         getAllOrderStatusesDesign()
+
+        if(name=="logic" && now=="payments_1") this.
+        getUniqueClientCodesWithPaymentsIn2008Design()
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }
