@@ -11,7 +11,8 @@ import {
 } from "../module/employees.js"
 
 import {
-    getAllSpanishClientsNames
+    getAllSpanishClientsNames,
+    getClientsInMadridWithSalesRep11Or30
 } from "../module/clients.js"
 
 import {
@@ -388,6 +389,33 @@ export class Mycard extends HTMLElement{
                 `;
             });
         }
+
+        // 16.Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
+
+        async getClientsInMadridWithSalesRep11Or30Design(){
+            let data = await getClientsInMadridWithSalesRep11Or30();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clients 2</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Clientes: </b>${val.client_name}</p>
+                             <p><b>Ciudad: </b>${val.city}</p>
+                             <p><b>Codigo empleado:</b> ${val.code_employee_sales_manager}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+
+
+
   
     static get observedAttributes() {
         return ["logic"];
@@ -431,6 +459,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="products_1") this.
         getOrnamentalProductsOver100StockByPriceDesign()
+
+        if(name=="logic" && now=="client_2") this.
+        getClientsInMadridWithSalesRep11Or30Design()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
