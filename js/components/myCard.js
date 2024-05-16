@@ -24,7 +24,8 @@ import {
 
 import {
     getUniqueClientCodesWithPaymentsIn2008,
-    getPaypalPayments2008OrderedDescending
+    getPaypalPayments2008OrderedDescending,
+    getAllUniquePaymentMethods
 } from "../module/payments.js"
 
 
@@ -340,6 +341,26 @@ export class Mycard extends HTMLElement{
             });
         }
 
+        // 14.Devuelve un listado con todas las formas de pago que aparecen en la tabla `pago`. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+
+
+        async getAllUniquePaymentMethodsDesign(){
+            let data = await getAllUniquePaymentMethods();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Payments 3</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Método de Pago: </b>${val}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
 
   
@@ -379,6 +400,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="payments_2") this.
         getPaypalPayments2008OrderedDescendingDesign()
+
+        if(name=="logic" && now=="payments_3") this.
+        getAllUniquePaymentMethodsDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
