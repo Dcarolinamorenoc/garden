@@ -14,6 +14,11 @@ import {
     getAllSpanishClientsNames
 } from "../module/clients.js"
 
+import {
+    getAllOrderStatuses
+} from "../module/requests.js"
+
+
 export class Mycard extends HTMLElement{
     constructor(){
         super();
@@ -163,6 +168,25 @@ export class Mycard extends HTMLElement{
         }
 
 
+        // 7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
+
+        async getAllOrderStatusesDesign(){
+            let data = await getAllOrderStatuses();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Requests 1</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Estado: </b>${val}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
 
   
@@ -181,6 +205,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_1") this.
         getAllSpanishClientsNamesDesign()
+
+        if(name=="logic" && now=="requests_1") this.
+        getAllOrderStatusesDesign()
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }
