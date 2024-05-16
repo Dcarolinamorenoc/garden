@@ -10,7 +10,9 @@ import {
     getAllNonSalesRepresentativeEmployees
 } from "../module/employees.js"
 
-
+import {
+    getAllSpanishClientsNames
+} from "../module/clients.js"
 
 export class Mycard extends HTMLElement{
     constructor(){
@@ -140,6 +142,27 @@ export class Mycard extends HTMLElement{
     }
 
 
+    // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
+
+    async getAllSpanishClientsNamesDesign(){
+            let data = await getAllSpanishClientsNames();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clients 1</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Nombre: </b>${val.nombre}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
 
 
   
@@ -155,6 +178,9 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="employees_2") this.getBossFullNameAndEmailDesign()
 
         if(name=="logic" && now=="employees_3") this.getAllNonSalesRepresentativeEmployeesDesign()
+
+        if(name=="logic" && now=="client_1") this.
+        getAllSpanishClientsNamesDesign()
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }
