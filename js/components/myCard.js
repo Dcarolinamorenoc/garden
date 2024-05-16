@@ -4,6 +4,10 @@ import {getAllOfficesCodeAndCity,
 } from "../module/offices.js"
 
 
+import {
+    getAllEmployeesWithBossAndCodeSeven
+} from "../module/employees.js"
+
 
 
 export class Mycard extends HTMLElement{
@@ -26,7 +30,7 @@ export class Mycard extends HTMLElement{
             this.shadowRoot.innerHTML += /*html*/`
                 <div class="report__card">
                     <div class="card__title">
-                        <div>Oficinas codigo</div>
+                        <div>Oficces 1</div>
                     </div>
                     <div class="card__body">
                         <div class="body__marck">
@@ -48,13 +52,36 @@ export class Mycard extends HTMLElement{
             this.shadowRoot.innerHTML += /*html*/`
                 <div class="report__card">
                     <div class="card__title">
-                        <div>La ciudad y el teléfono de las oficinas de España</div>
+                        <div>Oficces 2</div>
                     </div>
                     <div class="card__body">
                         <div class="body__marck">
                         <p><b>ID: </b>${val.id}</p>
                         <p><b>Ciudad: </b>${val.ciudad}</p>
                          <p><b>Telefono: </b>${val.telefono}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+
+    // 3. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
+
+    async getAllEmployeesWithBossAndCodeSevenDesign(){
+        let data = await getAllEmployeesWithBossAndCodeSeven();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Employees 1</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                        <p><b>Apellidos: </b>${val.apellidos}</p>
+                        <p><b>Email: </b>${val.email}</p>
                         </div>
                     </div>
                 </div>
@@ -70,6 +97,8 @@ export class Mycard extends HTMLElement{
     attributeChangedCallback(name, old, now) {
         if(name=="logic" && now=="offices_1") this.getAllOfficesCodeAndCityDesign() //1
         if(name=="logic" && now=="offices_2") this.getAllOfficesFromSpainCityAndMovilDesign() 
+
+        if(name=="logic" && now=="employees_1") this.getAllEmployeesWithBossAndCodeSevenDesign() 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }
