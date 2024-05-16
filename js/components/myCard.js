@@ -16,7 +16,8 @@ import {
 
 import {
     getAllOrderStatuses,
-    getAllDelayedOrders
+    getAllDelayedOrders,
+    getDelayedOrdersList
 } from "../module/requests.js"
 
 import {
@@ -222,7 +223,32 @@ export class Mycard extends HTMLElement{
                 this.shadowRoot.innerHTML += /*html*/`
                     <div class="report__card">
                         <div class="card__title">
-                            <div> Requests 1</div>
+                            <div> Requests 2</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Pedido Codigo: </b>${val.Pedido_Codigo}</p>
+                            <p><b>Cliente Codigo: </b>${val.Cliente_Codigo}</p>
+                            <p><b>Fecha Esperada: </b>${val.Fecha_Esperada}</p>
+                            <p><b>Fecha Entrega: </b>${val.Fecha_Entrega}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+
+        // 10.Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+
+        async getDelayedOrdersListDesign(){
+            let data = await getDelayedOrdersList();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Requests 3</div>
                         </div>
                         <div class="card__body">
                             <div class="body__marck">
@@ -263,6 +289,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="requests_2") this.
         getAllDelayedOrdersDesign()
+
+        if(name=="logic" && now=="requests_3") this.
+        getDelayedOrdersListDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
