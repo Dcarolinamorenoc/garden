@@ -23,7 +23,8 @@ import {
 } from "../module/requests.js"
 
 import {
-    getUniqueClientCodesWithPaymentsIn2008
+    getUniqueClientCodesWithPaymentsIn2008,
+    getPaypalPayments2008OrderedDescending
 } from "../module/payments.js"
 
 
@@ -314,6 +315,33 @@ export class Mycard extends HTMLElement{
             });
         }
 
+        // 13.Devuelve un listado con todos los pagos que se realizaron en el año `2008` mediante `Paypal`. Ordene el resultado de mayor a menor.
+
+
+        async getPaypalPayments2008OrderedDescendingDesign(){
+            let data = await getPaypalPayments2008OrderedDescending();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Payments 2</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Codigo cliente: </b>${val.code_client}</p>
+                             <p><b>Payments: </b>${val.payment}</p>
+                             <p><b>ID Transaccion: </b>${val.id_transaction}</p>
+                             <p><b>Total: </b>${val.total}</p>
+                             <p><b>ID: </b>${val.id}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+
   
     static get observedAttributes() {
         return ["logic"];
@@ -348,6 +376,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="requests_5") this.
         getOrdersDeliveredInJanuaryDesign()
+
+        if(name=="logic" && now=="payments_2") this.
+        getPaypalPayments2008OrderedDescendingDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()

@@ -1317,6 +1317,8 @@ btn.forEach(val =>{
             report__details.innerHTML = /*html*/`
                 <my-details logic="payments_1" text="8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos."></my-details>
 
+                <my-details logic="payments_2" text="13.Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor."></my-details>
+
 
             `;
         }
