@@ -6,7 +6,8 @@ import {getAllOfficesCodeAndCity,
 
 import {
     getAllEmployeesWithBossAndCodeSeven,
-    getBossFullNameAndEmail
+    getBossFullNameAndEmail,
+    getAllNonSalesRepresentativeEmployees
 } from "../module/employees.js"
 
 
@@ -115,6 +116,32 @@ export class Mycard extends HTMLElement{
     }
 
 
+    // 5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
+
+
+    async getAllNonSalesRepresentativeEmployeesDesign(){
+        let data = await getAllNonSalesRepresentativeEmployees();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Employees 3</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                        <p><b>Apellidos: </b>${val.apellidos}</p>
+                        <p><b>Puesto: </b>${val.puesto}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+
+
+
   
     static get observedAttributes() {
         return ["logic"];
@@ -126,6 +153,8 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="employees_1") this.getAllEmployeesWithBossAndCodeSevenDesign()
         
         if(name=="logic" && now=="employees_2") this.getBossFullNameAndEmailDesign()
+
+        if(name=="logic" && now=="employees_3") this.getAllNonSalesRepresentativeEmployeesDesign()
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }

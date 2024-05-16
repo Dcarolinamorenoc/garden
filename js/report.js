@@ -1283,6 +1283,8 @@ btn.forEach(val =>{
                 <my-details logic="employees_1" text="3. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7."></my-details>
 
                 <my-details logic="employees_2" text="4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa."></my-details>
+
+                <my-details logic="employees_3" text="5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas."></my-details>
             
             `;
         }
