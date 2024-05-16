@@ -28,6 +28,12 @@ import {
     getAllUniquePaymentMethods
 } from "../module/payments.js"
 
+import {
+    getOrnamentalProductsOver100StockByPrice
+} from "../module/products.js"
+
+
+
 
 export class Mycard extends HTMLElement{
     constructor(){
@@ -362,7 +368,26 @@ export class Mycard extends HTMLElement{
             });
         }
 
+        // 15.Devuelve un listado con todos los productos que pertenecen a la gama `Ornamentales` y que tienen más de `100` unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
 
+        async getOrnamentalProductsOver100StockByPriceDesign(){
+            let data = await getOrnamentalProductsOver100StockByPrice();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Products 1</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Producto: </b>${val.name}</p>
+                             <p><b>Precio: </b>${val.price_sale}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
   
     static get observedAttributes() {
         return ["logic"];
@@ -403,6 +428,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="payments_3") this.
         getAllUniquePaymentMethodsDesign()
+
+        if(name=="logic" && now=="products_1") this.
+        getOrnamentalProductsOver100StockByPriceDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
