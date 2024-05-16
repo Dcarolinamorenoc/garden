@@ -15,7 +15,8 @@ import {
 } from "../module/clients.js"
 
 import {
-    getAllOrderStatuses
+    getAllOrderStatuses,
+    getAllDelayedOrders
 } from "../module/requests.js"
 
 import {
@@ -213,6 +214,30 @@ export class Mycard extends HTMLElement{
         }
 
 
+        // 9.Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
+
+        async getAllDelayedOrdersDesign(){
+            let data = await getAllDelayedOrders();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div> Requests 1</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Pedido Codigo: </b>${val.Pedido_Codigo}</p>
+                            <p><b>Cliente Codigo: </b>${val.Cliente_Codigo}</p>
+                            <p><b>Fecha Esperada: </b>${val.Fecha_Esperada}</p>
+                            <p><b>Fecha Entrega: </b>${val.Fecha_Entrega}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
   
     static get observedAttributes() {
         return ["logic"];
@@ -235,6 +260,11 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="payments_1") this.
         getUniqueClientCodesWithPaymentsIn2008Design()
+
+        if(name=="logic" && now=="requests_2") this.
+        getAllDelayedOrdersDesign()
+
+
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
         // if(name=="logic" && now=="employ_12") this.getAllEmployNotClientsDesign()
     }
