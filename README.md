@@ -6,6 +6,9 @@ npm run start-all
 Ya que este trae todos los datos y activa de una todo
 
 
+-----------------------------------------------------------------------
+
+
 ### Consultas sobre una tabla
 
 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
