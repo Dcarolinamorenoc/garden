@@ -24,7 +24,8 @@ import {
     getClientsEmploy,
     getDelayedOrdersPayPalClients,
     clientsNoPayments,
-    clientsNoOrder
+    clientsNoOrder,
+    clientsNoPaymentsAndNoOrder
 } from "../module/clients.js"
 
 import {
@@ -667,7 +668,7 @@ export class Mycard extends HTMLElement{
                     this.shadowRoot.innerHTML += /*html*/`
                         <div class="report__card">
                             <div class="card__title">
-                                <div>Clients 9</div>
+                                <div>Request Details 1</div>
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
@@ -689,7 +690,7 @@ export class Mycard extends HTMLElement{
                     this.shadowRoot.innerHTML += /*html*/`
                         <div class="report__card">
                             <div class="card__title">
-                                <div>Clients 9</div>
+                                <div>Clients 10</div>
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
@@ -709,7 +710,29 @@ export class Mycard extends HTMLElement{
                     this.shadowRoot.innerHTML += /*html*/`
                         <div class="report__card">
                             <div class="card__title">
-                                <div>Clients 9</div>
+                                <div>Clients 11</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+
+            // 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
+
+
+            async clientsNoPaymentsAndNoOrderDesign(){
+                let data = await clientsNoPaymentsAndNoOrder();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Clients 12</div>
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
@@ -805,6 +828,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_11") this.
         clientsNoOrderDesign()
+
+        if(name=="logic" && now=="client_12") this.
+        clientsNoPaymentsAndNoOrderDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
