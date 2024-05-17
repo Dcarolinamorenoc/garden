@@ -1304,6 +1304,8 @@ btn.forEach(val =>{
 
                 <my-details logic="client_6" text="4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante."></my-details>
 
+                <my-details logic="client_7" text="5. Devuelve el nombre de los clientes que **no** hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante."></my-details>
+
 
             `;
         }
