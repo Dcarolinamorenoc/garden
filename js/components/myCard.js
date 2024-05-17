@@ -7,7 +7,8 @@ import {getAllOfficesCodeAndCity,
 import {
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
-    getAllNonSalesRepresentativeEmployees
+    getAllNonSalesRepresentativeEmployees,
+    getEmployeesWithBossesAndBossesOfBosses
 } from "../module/employees.js"
 
 import {
@@ -580,6 +581,30 @@ export class Mycard extends HTMLElement{
             });
         }
 
+        // 8. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
+
+async getEmployeesWithBossesAndBossesOfBossesDesign(){
+            let data = await getEmployeesWithBossesAndBossesOfBosses();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Employees 4</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                            <p><b>Nombre jefe: </b>${val.boss}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+
+
   
     static get observedAttributes() {
         return ["logic"];
@@ -647,6 +672,8 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_8") this.
         getClientsEmployDesign()
+
+        if(name=="logic" && now=="employees_4") this.getEmployeesWithBossesAndBossesOfBossesDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
