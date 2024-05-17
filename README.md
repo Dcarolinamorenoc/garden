@@ -1,6 +1,8 @@
 
 ### Comando para ejecutar los json 
 
+npm install json-server
+
 npm run start-all
 
 Ya que este trae todos los datos y activa de una todo
