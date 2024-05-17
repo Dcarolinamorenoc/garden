@@ -15,7 +15,8 @@ import {
     getClientsInMadridWithSalesRep11Or30,
     getEmployeesCode,
     getClientsWithSalesRepresentatives,
-    getClientsWithoutPayments
+    getClientsWithoutPayments,
+    getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity
 } from "../module/clients.js"
 
 import {
@@ -486,7 +487,26 @@ export class Mycard extends HTMLElement{
         }
 
 
+        // 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
+        async getClientsWithPaymentsAndSalesRepresentativesAndOfficeCityDesign(){
+            let data = await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clients 6</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
   
     static get observedAttributes() {
         return ["logic"];
@@ -542,6 +562,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_5") this.
         getClientsWithoutPaymentsDesign()
+
+        if(name=="logic" && now=="client_6") this.
+        getClientsWithPaymentsAndSalesRepresentativesAndOfficeCityDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
