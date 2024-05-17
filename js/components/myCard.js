@@ -12,7 +12,8 @@ import {
 
 import {
     getAllSpanishClientsNames,
-    getClientsInMadridWithSalesRep11Or30
+    getClientsInMadridWithSalesRep11Or30,
+    getEmployeesCode
 } from "../module/clients.js"
 
 import {
@@ -413,6 +414,34 @@ export class Mycard extends HTMLElement{
         }
 
 
+        // Consultas multitabla (Composición interna)
+
+        // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+
+        async getEmployeesCodeDesign(){
+            let data = await getEmployeesCode();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clients 3</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                             <p><b>Nombre empleado: </b>${val.name_employee }</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+
+
+
 
 
 
@@ -462,6 +491,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_2") this.
         getClientsInMadridWithSalesRep11Or30Design()
+
+        if(name=="logic" && now=="client_3") this.
+        getEmployeesCodeDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()

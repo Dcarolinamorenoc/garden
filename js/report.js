@@ -1296,6 +1296,8 @@ btn.forEach(val =>{
 
                 <my-details logic="client_2" text="16.Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30."></my-details>
 
+                <my-details logic="client_3" text="1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas."></my-details>
+
 
             `;
         }
