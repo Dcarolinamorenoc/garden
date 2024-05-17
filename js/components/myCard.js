@@ -23,7 +23,8 @@ import {
     getOfficesClientsInFuenlabrada,
     getClientsEmploy,
     getDelayedOrdersPayPalClients,
-    clientsNoPayments
+    clientsNoPayments,
+    clientsNoOrder
 } from "../module/clients.js"
 
 import {
@@ -700,6 +701,26 @@ export class Mycard extends HTMLElement{
                 });
             }
 
+            // 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
+
+            async clientsNoOrderDesign(){
+                let data = await clientsNoOrder();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Clients 9</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
 
   
     static get observedAttributes() {
@@ -781,6 +802,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_10") this.
         clientsNoPaymentsDesign()
+
+        if(name=="logic" && now=="client_11") this.
+        clientsNoOrderDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
