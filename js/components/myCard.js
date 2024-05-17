@@ -17,7 +17,8 @@ import {
     getClientsWithSalesRepresentatives,
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
-    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity
+    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
+    getOfficesClientsInFuenlabrada
 } from "../module/clients.js"
 
 import {
@@ -532,9 +533,28 @@ export class Mycard extends HTMLElement{
         }
 
 
+        // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
 
-
+        async getOfficesClientsInFuenlabradaDesign(){
+            let data = await getOfficesClientsInFuenlabrada();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clients 8</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Codigo: </b>${val.codigo}</p>
+                            <p><b>Direccion 1: </b>${val.direccion1}</p>
+                            <p><b>Direccion 2: </b>${val.direccion2}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
   
     static get observedAttributes() {
@@ -597,6 +617,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_7") this.
         getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign()
+
+        if(name=="logic" && now=="client_8") this.
+        getOfficesClientsInFuenlabradaDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
