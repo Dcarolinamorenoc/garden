@@ -8,7 +8,8 @@ import {
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
     getAllNonSalesRepresentativeEmployees,
-    getEmployeesWithBossesAndBossesOfBosses
+    getEmployeesWithBossesAndBossesOfBosses,
+    getEmployeesWithBossAndBossOfBoss,
 } from "../module/employees.js"
 
 import {
@@ -583,26 +584,51 @@ export class Mycard extends HTMLElement{
 
         // 8. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
 
-async getEmployeesWithBossesAndBossesOfBossesDesign(){
-            let data = await getEmployeesWithBossesAndBossesOfBosses();
-            data.forEach(val => {
-                this.shadowRoot.innerHTML += /*html*/`
-                    <div class="report__card">
-                        <div class="card__title">
-                            <div>Employees 4</div>
-                        </div>
-                        <div class="card__body">
-                            <div class="body__marck">
-                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
-                            <p><b>Nombre jefe: </b>${val.boss}</p>
+        async getEmployeesWithBossesAndBossesOfBossesDesign(){
+                    let data = await getEmployeesWithBossesAndBossesOfBosses();
+                    data.forEach(val => {
+                        this.shadowRoot.innerHTML += /*html*/`
+                            <div class="report__card">
+                                <div class="card__title">
+                                    <div>Employees 4</div>
+                                </div>
+                                <div class="card__body">
+                                    <div class="body__marck">
+                                    <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                                    <p><b>Nombre jefe: </b>${val.boss}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+
+            // 9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
+
+
+
+
+            async getEmployeesWithBossAndBossOfBossDesign() {
+                let data = await getEmployeesWithBossAndBossOfBoss();
+                data.forEach(val => {
+                    let bossNames = val.jefes ? val.jefes.join(', ') : ''; // Comprobación de seguridad por si val.jefes es undefined
+                    this.shadowRoot.innerHTML += /*html*/ `
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Employees 5</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                    <p><b>Nombre del Empleado: </b>${val.fullName} </p>
+                                    <p><b>Los jefes: </b>${bossNames}</p> <!-- Utilizar val.jefes aquí -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-            });
-        }
-
-
+                    `;
+                });
+            }
+            
 
 
   
@@ -674,6 +700,8 @@ async getEmployeesWithBossesAndBossesOfBossesDesign(){
         getClientsEmployDesign()
 
         if(name=="logic" && now=="employees_4") this.getEmployeesWithBossesAndBossesOfBossesDesign()
+
+        if(name=="logic" && now=="employees_5") this.getEmployeesWithBossAndBossOfBossDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
