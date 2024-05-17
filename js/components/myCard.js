@@ -14,7 +14,8 @@ import {
     getAllSpanishClientsNames,
     getClientsInMadridWithSalesRep11Or30,
     getEmployeesCode,
-    getClientsWithSalesRepresentatives
+    getClientsWithSalesRepresentatives,
+    getClientsWithoutPayments
 } from "../module/clients.js"
 
 import {
@@ -463,6 +464,26 @@ export class Mycard extends HTMLElement{
         }
 
 
+        // 3. Muestra el nombre de los clientes que **no** hayan realizado pagos junto con el nombre de sus representantes de ventas.
+
+        async getClientsWithoutPaymentsDesign(){
+            let data = await getClientsWithoutPayments();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clients 5</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
 
 
@@ -518,6 +539,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_4") this.
         getClientsWithSalesRepresentativesDesign()
+
+        if(name=="logic" && now=="client_5") this.
+        getClientsWithoutPaymentsDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
