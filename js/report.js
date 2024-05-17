@@ -1274,6 +1274,8 @@ btn.forEach(val =>{
 
 
                 <my-details logic="offices_2" text="2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España."></my-details>
+
+                <my-details logic="offices_3" text="6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada."></my-details>
             
             `;
         }
@@ -1306,7 +1308,7 @@ btn.forEach(val =>{
 
                 <my-details logic="client_7" text="5. Devuelve el nombre de los clientes que **no** hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante."></my-details>
 
-                <my-details logic="client_8" text="6. Devuelve un listado con el nombre de los todos los clientes españoles."></my-details>
+                <my-details logic="client_8" text=" 7. Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante."></my-details>
 
 
             `;

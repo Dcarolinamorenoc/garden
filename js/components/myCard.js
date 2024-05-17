@@ -18,7 +18,8 @@ import {
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
     getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
-    getOfficesClientsInFuenlabrada
+    getOfficesClientsInFuenlabrada,
+    getClientsEmploy
 } from "../module/clients.js"
 
 import {
@@ -533,7 +534,7 @@ export class Mycard extends HTMLElement{
         }
 
 
-        // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
+        // Lista la dirección de las oficinas que tengan clientes en `Fuenlabrada`.
 
 
         async getOfficesClientsInFuenlabradaDesign(){
@@ -549,6 +550,29 @@ export class Mycard extends HTMLElement{
                             <p><b>Codigo: </b>${val.codigo}</p>
                             <p><b>Direccion 1: </b>${val.direccion1}</p>
                             <p><b>Direccion 2: </b>${val.direccion2}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+        // 7. Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+
+        async getClientsEmployDesign(){
+            let data = await getClientsEmploy();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>offices 3</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                        <p><b>Nombre del empleado: </b>${val.name_employee}</p>
+                         <p><b>Ciudad: </b>${val.city}</p>
+                         <p><b>Cliente: </b>${val.client_name}</p>
                             </div>
                         </div>
                     </div>
@@ -618,8 +642,11 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="client_7") this.
         getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign()
 
-        if(name=="logic" && now=="client_8") this.
+        if(name=="logic" && now=="offices_3") this.
         getOfficesClientsInFuenlabradaDesign()
+
+        if(name=="logic" && now=="client_8") this.
+        getClientsEmployDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
