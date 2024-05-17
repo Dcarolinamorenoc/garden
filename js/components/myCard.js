@@ -21,7 +21,8 @@ import {
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
     getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
     getOfficesClientsInFuenlabrada,
-    getClientsEmploy
+    getClientsEmploy,
+    getDelayedOrdersPayPalClients
 } from "../module/clients.js"
 
 import {
@@ -630,6 +631,29 @@ export class Mycard extends HTMLElement{
             }
             
 
+            // 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+            
+
+
+            async getDelayedOrdersPayPalClientsDesign(){
+                let data = await getDelayedOrdersPayPalClients();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Clients 9</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Nombre del cliente: </b>${val.client_name}</p>
+                                <p><b>Estado: </b>${val.status}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
 
   
     static get observedAttributes() {
@@ -702,6 +726,9 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="employees_4") this.getEmployeesWithBossesAndBossesOfBossesDesign()
 
         if(name=="logic" && now=="employees_5") this.getEmployeesWithBossAndBossOfBossDesign()
+
+        if(name=="logic" && now=="client_9") this.
+        getDelayedOrdersPayPalClientsDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
