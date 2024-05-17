@@ -22,7 +22,8 @@ import {
     getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
     getOfficesClientsInFuenlabrada,
     getClientsEmploy,
-    getDelayedOrdersPayPalClients
+    getDelayedOrdersPayPalClients,
+    clientsNoPayments
 } from "../module/clients.js"
 
 import {
@@ -678,6 +679,27 @@ export class Mycard extends HTMLElement{
                 });
             }
 
+            // 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+
+
+            async clientsNoPaymentsDesign(){
+                let data = await clientsNoPayments();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Clients 9</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
 
   
     static get observedAttributes() {
@@ -756,6 +778,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="requests_details_1") this.
         lisOfProductRangesPurchasedByClientDesign()
+
+        if(name=="logic" && now=="client_10") this.
+        clientsNoPaymentsDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()

@@ -1316,6 +1316,10 @@ btn.forEach(val =>{
 
                 <my-details logic="client_9" text=" 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido."></my-details>
 
+                <my-details logic="client_10" text=" 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago."></my-details>
+
+                
+
 
             `;
         }
