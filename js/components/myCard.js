@@ -10,6 +10,7 @@ import {
     getAllNonSalesRepresentativeEmployees,
     getEmployeesWithBossesAndBossesOfBosses,
     getEmployeesWithBossAndBossOfBoss,
+    ListEmployeesWithoutAssociatedOffice
 } from "../module/employees.js"
 
 import {
@@ -736,7 +737,28 @@ export class Mycard extends HTMLElement{
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
-                                <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                                <p><b>Empleado sin Oficina: </b>${val.name}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+
+            // 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
+
+            async ListEmployeesWithoutAssociatedOfficeDesign(){
+                let data = await ListEmployeesWithoutAssociatedOffice();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Employees 6</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Empleado sin Oficina: </b>${val.name}
                                 </div>
                             </div>
                         </div>
@@ -831,6 +853,8 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_12") this.
         clientsNoPaymentsAndNoOrderDesign()
+
+        if(name=="logic" && now=="employees_6") this.ListEmployeesWithoutAssociatedOfficeDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
