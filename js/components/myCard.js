@@ -44,7 +44,9 @@ import {
 } from "../module/products.js"
 
 
-
+import{
+    lisOfProductRangesPurchasedByClient
+} from "../module/request_details.js"
 
 export class Mycard extends HTMLElement{
     constructor(){
@@ -654,6 +656,28 @@ export class Mycard extends HTMLElement{
                 });
             }
 
+            // 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+
+
+            async lisOfProductRangesPurchasedByClientDesign(){
+                let data = await lisOfProductRangesPurchasedByClient();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Clients 9</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Cliente: </b>${val.client_name}</p>
+                                <p><b>Gama: </b>${val.gama}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
 
   
     static get observedAttributes() {
@@ -729,6 +753,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_9") this.
         getDelayedOrdersPayPalClientsDesign()
+
+        if(name=="logic" && now=="requests_details_1") this.
+        lisOfProductRangesPurchasedByClientDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()

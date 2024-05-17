@@ -1358,6 +1358,18 @@ btn.forEach(val =>{
             `;
         }
 
+
+        if(e.target.innerHTML=="request_details"){
+            report__details.innerHTML = /*html*/`
+                <my-details logic="requests_details_1" text="11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+                "></my-details>
+
+
+
+            
+            `;
+        }
+
     })
 })
 let [clients] = report__menu
