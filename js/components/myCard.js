@@ -12,7 +12,8 @@ import {
     getEmployeesWithBossAndBossOfBoss,
     ListEmployeesWithoutAssociatedOffice,
     ListEmployeesWithoutAssociatedClient,
-    listEmployeesWithoutAssociatedClientAndTheirOffices
+    listEmployeesWithoutAssociatedClientAndTheirOffices,
+    ListEmployeesWithoutAssociatedOfficeAndClient
 } from "../module/employees.js"
 
 import {
@@ -828,6 +829,61 @@ export class Mycard extends HTMLElement{
                     `;
                 });
             }
+
+
+            // 7. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado.
+
+            async ListEmployeesWithoutAssociatedOfficeAndClientDesign() {
+                let data = await ListEmployeesWithoutAssociatedOfficeAndClient();
+                
+                if (data.length === 0) {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Employees 8</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                    <p>No hay empleados sin oficina.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    data.forEach(val => {
+                        this.shadowRoot.innerHTML += /*html*/`
+                            <div class="report__card">
+                                <div class="card__title">
+                                    <div>Employees 8</div>
+                                </div>
+                                <div class="card__body">
+                                    <div class="body__marck">
+                                        <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            
+                // Verificar si hay empleados sin cliente asociado
+                let employeesWithoutClient = data.filter(employee => !employee.client);
+                if (employeesWithoutClient.length > 0) {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Employees 8</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                    <p>Hay empleados que no tienen un cliente asociado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
             
 
 
@@ -923,6 +979,8 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="employees_7") this.ListEmployeesWithoutAssociatedClientDesign()
 
         if(name=="logic" && now=="employees_8") this.listEmployeesWithoutAssociatedClientAndTheirOfficesDesign()
+
+        if(name=="logic" && now=="employees_9") this.ListEmployeesWithoutAssociatedOfficeAndClientDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
