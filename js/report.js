@@ -19,7 +19,7 @@
 //                     <div>Oficinas</div>
 //                 </div>
 //                 <div class="card__body">
-//                     <div class="body__marck">
+//                     <div class="body__msdaarck">
 //                         <p><b>Codigo Oficina: </b>${val.codigo}</p>
 //                         <p><b>Ciudad: </b>${val.ciudad}</p>
 //                     </div>

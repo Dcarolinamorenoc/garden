@@ -619,7 +619,7 @@ export class Mycard extends HTMLElement{
             async getEmployeesWithBossAndBossOfBossDesign() {
                 let data = await getEmployeesWithBossAndBossOfBoss();
                 data.forEach(val => {
-                    let bossNames = val.jefes ? val.jefes.join(', ') : ''; // Comprobación de seguridad por si val.jefes es undefined
+                    let bossNames = val.jefes ? val.jefes.join(', ') : '';
                     this.shadowRoot.innerHTML += /*html*/ `
                         <div class="report__card">
                             <div class="card__title">
@@ -627,8 +627,8 @@ export class Mycard extends HTMLElement{
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
-                                    <p><b>Nombre del Empleado: </b>${val.fullName} </p>
-                                    <p><b>Los jefes: </b>${bossNames}</p> <!-- Utilizar val.jefes aquí -->
+                                    <p><b>Nombre del Empleado: </b>${val.fullName}</p>
+                                    <p><b>Los jefes: </b>${bossNames}</p>
                                 </div>
                             </div>
                         </div>
@@ -749,8 +749,11 @@ export class Mycard extends HTMLElement{
             // 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
 
             async ListEmployeesWithoutAssociatedOfficeDesign(){
-                let data = await ListEmployeesWithoutAssociatedOffice();
-                data.forEach(val => {
+                // Importar la función para obtener empleados sin oficina asociada
+                const data = await ListEmployeesWithoutAssociatedOffice();
+                
+                // Verificar si no hay empleados sin oficina asociada
+                if (data.length === 0) {
                     this.shadowRoot.innerHTML += /*html*/`
                         <div class="report__card">
                             <div class="card__title">
@@ -758,12 +761,28 @@ export class Mycard extends HTMLElement{
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
-                                <p><b>Empleado sin Oficina: </b>${val.name}
+                                    <p>No hay empleados sin oficina asociada</p>
                                 </div>
                             </div>
                         </div>
                     `;
-                });
+                } else {
+                    // Mostrar los datos en la interfaz
+                    data.forEach(val => {
+                        this.shadowRoot.innerHTML += /*html*/`
+                            <div class="report__card">
+                                <div class="card__title">
+                                    <div>Employees 6</div>
+                                </div>
+                                <div class="card__body">
+                                    <div class="body__marck">
+                                        <p><b>Empleado sin Oficina: </b>${val.nombre} ${val.apellido}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
             }
 
 
