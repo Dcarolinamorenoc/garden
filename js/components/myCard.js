@@ -1022,6 +1022,9 @@ export class Mycard extends HTMLElement{
             }
 
 
+            // importar datos 
+
+
   
     static get observedAttributes() {
         return ["logic"];
