@@ -1373,6 +1373,9 @@ btn.forEach(val =>{
 
                 <my-details logic="products_2" text="8. Devuelve un listado de los productos que nunca han aparecido en un pedido."></my-details>
 
+                <my-details logic="products_3" text="9. Devuelve un listado de los productos que nunca han aparecido en un pedido. El resultado debe mostrar el nombre, la descripción y la imagen del producto.
+                "></my-details>
+
 
 
             

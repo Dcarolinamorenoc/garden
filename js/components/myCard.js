@@ -48,7 +48,8 @@ import {
 
 import {
     getOrnamentalProductsOver100StockByPrice,
-    productsNeverOrdered
+    productsNeverOrdered,
+    getAllProductsNeverOrderedWithDetails
 } from "../module/products.js"
 
 
@@ -894,12 +895,37 @@ export class Mycard extends HTMLElement{
                     this.shadowRoot.innerHTML += /*html*/`
                         <div class="report__card">
                             <div class="card__title">
-                                <div>Products </div>
+                                <div>Products 2</div>
                             </div>
                             <div class="card__body">
                                 <div class="body__marck">
                                 <p><b>Codigo Producto: </b>${val.code_product} </p>
                              <p><b>Nombre: </b>${val.name} </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+
+            // 9. Devuelve un listado de los productos que nunca han aparecido en un pedido. El resultado debe mostrar el nombre, la descripción y la imagen del producto.
+
+
+            async getAllProductsNeverOrderedWithDetailsDesign(){
+                let data = await getAllProductsNeverOrderedWithDetails();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Products 3</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Codigo Producto: </b>${val.code_product} </p>
+                             <p><b>Name: </b>${val.name} </p>
+                             <p><b>Descripcion: </b>${val.description} </p>
+                             <p><b>Imagen: </b>${val.image} </p>
                                 </div>
                             </div>
                         </div>
@@ -1005,6 +1031,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="products_2") this.
         productsNeverOrderedDesign()
+
+        if(name=="logic" && now=="products_3") this.
+        getAllProductsNeverOrderedWithDetailsDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
