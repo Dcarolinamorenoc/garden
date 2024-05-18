@@ -198,11 +198,12 @@ export const ListEmployeesWithoutAssociatedClient = async () => {
         let clientEmployeeCodes = clients.map(client => client.code_employee_sales_manager); 
         let employeesWithoutClient = employees.filter(employee => !clientEmployeeCodes.includes(employee.employee_code));
 
-        // Mapear los datos para devolver solo nombre, primer apellido y segundo apellido
+        // Mapear los datos para devolver nombre, primer apellido, segundo apellido y código de oficina
         let simplifiedData = employeesWithoutClient.map(employee => ({
             name: employee.name,
             lastname1: employee.lastname1,
-            lastname2: employee.lastname2
+            lastname2: employee.lastname2,
+            code_office: employee.code_office // Agregar código de oficina
         }));
 
         return simplifiedData;
