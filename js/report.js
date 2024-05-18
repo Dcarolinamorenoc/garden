@@ -1332,6 +1332,8 @@ btn.forEach(val =>{
 
                 <my-details logic="client_12" text=" 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido."></my-details>
 
+                <my-details logic="client_13" text=" 11. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago."></my-details>
+
                 
 
 

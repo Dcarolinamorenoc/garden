@@ -29,7 +29,8 @@ import {
     getDelayedOrdersPayPalClients,
     clientsNoPayments,
     clientsNoOrder,
-    clientsNoPaymentsAndNoOrder
+    clientsNoPaymentsAndNoOrder,
+    clientsWithOrderNoPayments
 } from "../module/clients.js"
 
 import {
@@ -933,6 +934,71 @@ export class Mycard extends HTMLElement{
                 });
             }
 
+            // 11. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
+
+            async clientsWithOrderNoPaymentsDesign(){
+                let data = await clientsWithOrderNoPayments();
+            
+                // Verificar si data es un array
+                if (!Array.isArray(data) || data.length === 0) {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Products 2</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                    <p><b>Nombre: </b>No hay clientes que han realizado su pedido y no han pagado</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+            
+                let clientsFound = false; // Variable para controlar si se encontraron clientes
+                
+                data.forEach(val => {
+                    // Aquí debes colocar la condición para determinar si el cliente ha realizado un pedido pero no ha pagado
+                    // Por ejemplo, si tienes una propiedad 'hasOrder' y 'hasPaid' en el objeto 'val', podrías usar:
+                    // if (val.hasOrder && !val.hasPaid)
+                    
+                    if (val.haRealizadoPedidoPeroNoPago) { // Cambia esto por la condición adecuada
+                        clientsFound = true; // Indica que se encontró al menos un cliente
+                        this.shadowRoot.innerHTML += /*html*/`
+                            <div class="report__card">
+                                <div class="card__title">
+                                    <div>Products 2</div>
+                                </div>
+                                <div class="card__body">
+                                    <div class="body__marck">
+                                        <p><b>Nombre: </b>${val.client_name}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+            
+                // Si no se encontraron clientes, muestra el mensaje adecuado
+                if (!clientsFound) {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Products 2</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                    <p><b>Nombre: </b>No hay clientes que han realizado su pedido y no han pagado</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            
+            
 
   
     static get observedAttributes() {
@@ -1034,6 +1100,10 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="products_3") this.
         getAllProductsNeverOrderedWithDetailsDesign()
+
+
+        if(name=="logic" && now=="client_13") this.
+        clientsWithOrderNoPaymentsDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
