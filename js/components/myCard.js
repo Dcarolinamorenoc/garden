@@ -47,7 +47,8 @@ import {
 } from "../module/payments.js"
 
 import {
-    getOrnamentalProductsOver100StockByPrice
+    getOrnamentalProductsOver100StockByPrice,
+    productsNeverOrdered
 } from "../module/products.js"
 
 
@@ -884,7 +885,27 @@ export class Mycard extends HTMLElement{
                 }
             }
 
-            
+
+            // 8. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+
+            async productsNeverOrderedDesign(){
+                let data = await productsNeverOrdered();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Products </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Codigo Producto: </b>${val.code_product} </p>
+                             <p><b>Nombre: </b>${val.name} </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
 
 
   
@@ -981,6 +1002,9 @@ export class Mycard extends HTMLElement{
         if(name=="logic" && now=="employees_8") this.listEmployeesWithoutAssociatedClientAndTheirOfficesDesign()
 
         if(name=="logic" && now=="employees_9") this.ListEmployeesWithoutAssociatedOfficeAndClientDesign()
+
+        if(name=="logic" && now=="products_2") this.
+        productsNeverOrderedDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()
