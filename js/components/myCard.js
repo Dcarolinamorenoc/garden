@@ -800,14 +800,14 @@ export class Mycard extends HTMLElement{
                             <div class="card__body">
                                 <div class="body__marck">
                                 <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
-
-                                <p><b>Oficina: </b>${val.code_office} </p>
                                 </div>
                             </div>
                         </div>
                     `;
                 });
             }
+
+            // 6. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan.
             
 
 
