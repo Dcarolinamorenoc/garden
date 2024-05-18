@@ -13,7 +13,8 @@ import {
     ListEmployeesWithoutAssociatedOffice,
     ListEmployeesWithoutAssociatedClient,
     listEmployeesWithoutAssociatedClientAndTheirOffices,
-    ListEmployeesWithoutAssociatedOfficeAndClient
+    ListEmployeesWithoutAssociatedOfficeAndClient,
+    listEmployeesWithoutAssociatedClientAndTheirBosses
 } from "../module/employees.js"
 
 import {
@@ -996,9 +997,30 @@ export class Mycard extends HTMLElement{
                     `;
                 }
             }
+
+
+            // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
             
             
-            
+            async listEmployeesWithoutAssociatedClientAndTheirBossesDesign(){
+                let data = await listEmployeesWithoutAssociatedClientAndTheirBosses();
+                data.forEach(val => {
+                    this.shadowRoot.innerHTML += /*html*/`
+                        <div class="report__card">
+                            <div class="card__title">
+                                <div>Employees 10</div>
+                            </div>
+                            <div class="card__body">
+                                <div class="body__marck">
+                                <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                             <p><b>Jefe: </b>${val.boss} </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
 
   
     static get observedAttributes() {
@@ -1104,6 +1126,9 @@ export class Mycard extends HTMLElement{
 
         if(name=="logic" && now=="client_13") this.
         clientsWithOrderNoPaymentsDesign()
+
+
+        if(name=="logic" && now=="employees_10") this.listEmployeesWithoutAssociatedClientAndTheirBossesDesign()
 
 
         // if(name=="logic" && now=="client_16") this.getAllClientsFromSpainAndRepresentative11Or30Design()

@@ -1300,6 +1300,8 @@ btn.forEach(val =>{
 
                 <my-details logic="employees_9" text="7. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado."></my-details>
 
+                <my-details logic="employees_10" text="12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado."></my-details>
+
                
             
             `;
