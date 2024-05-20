@@ -7,14 +7,14 @@
   "scripts": {
     "start-all": "npm run clients & npm run employees & npm run gama & npm run offices & npm run payments & npm run products & npm run request_details & npm run requests & npm run dev",
     "dev": "node --watch js/main.js",
-    "clients": "json-server js/db/clients.json -p 5501",
-    "employees": "json-server js/db/employees.json -p 5502",
-    "gama": "json-server js/db/gama.json -p 5503",
-    "offices": "json-server js/db/offices.json -p 5504",
-    "payments": "json-server js/db/payments.json -p 5505",
-    "products": "json-server js/db/products.json -p 5506",
-    "request_details": "json-server js/db/request_details.json -p 5507",
-    "requests": "json-server js/db/requests.json -p 5508"
+    "clients": "json-server js/db/clients.json -p 5341",
+    "employees": "json-server js/db/employees.json -p 5342",
+    "gama": "json-server js/db/gama.json -p 5343",
+    "offices": "json-server js/db/offices.json -p 5344",
+    "payments": "json-server js/db/payments.json -p 5345",
+    "products": "json-server js/db/products.json -p 5346",
+    "request_details": "json-server js/db/request_details.json -p 5348",
+    "requests": "json-server js/db/requests.json -p 5349"
   },
   "keywords": [],
   "author": "",

@@ -1,7 +1,7 @@
 // 1. devuelve un listado con el codigo de oficina y la ciudad donde hay oficinas
 
 export const getAllOfficesCodeAndCity = async  () => {
-    let res = await fetch("http://localhost:5504/offices")
+    let res = await fetch("http://localhost:5344/offices")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -18,7 +18,7 @@ export const getAllOfficesCodeAndCity = async  () => {
 
 
 export const getAllOfficesFromSpainCityAndMovil =  async() =>{
-    let res = await fetch ("http://localhost:5504/offices?country=España")
+    let res = await fetch ("http://localhost:5344/offices?country=España")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -46,7 +46,7 @@ export const getAllOfficesFromSpainCityAndMovil =  async() =>{
 // 5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getOfficesByCode = async(code) =>{
-    let res = await fetch(`http://localhost:5504/offices?code_office=${code}`);
+    let res = await fetch(`http://localhost:5344/offices?code_office=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -60,7 +60,7 @@ export const getOfficesByCode = async(code) =>{
 
 
 export const getOfficesWithClientsInFuenlabrada = async () => {
-    let res = await fetch("http://localhost:5504/offices?city=Fuenlabrada");
+    let res = await fetch("http://localhost:5344/offices?city=Fuenlabrada");
     let offices = await res.json();
     
     for (let i = 0; i < offices.length; i++) {
@@ -106,14 +106,14 @@ export const getOfficesWithClientsInFuenlabrada = async () => {
 
 
 export const getOffices = async () => {
-    let res = await fetch("http://localhost:5504/offices?code_office");
+    let res = await fetch("http://localhost:5344/offices?code_office");
     let dataOffices = await res.json();
     return dataOffices;
 }
 
 
 export const getAllOffices = async() => {
-    let res = await fetch("http://localhost:5504/offices");
+    let res = await fetch("http://localhost:5344/offices");
     let data = await res.json()
     return data;
 }

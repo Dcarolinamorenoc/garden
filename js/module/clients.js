@@ -1,7 +1,7 @@
 // 6.Devuelve un listado con el nombre de los todos los clientes españoles.
 
 export const getAllSpanishClientsNames =  async() =>{
-    let res = await fetch ("http://localhost:5501/clients?country=Spain")
+    let res = await fetch ("http://localhost:5341/clients?country=Spain")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -15,7 +15,7 @@ export const getAllSpanishClientsNames =  async() =>{
 // 16.Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30.
 
 export const getClientsInMadridWithSalesRep11Or30 = async () => {
-    let res = await fetch("http://localhost:5501/clients?city=Madrid");
+    let res = await fetch("http://localhost:5341/clients?city=Madrid");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -71,7 +71,7 @@ import{
 // junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getClientsEmploy = async() =>{
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     for (let i = 0; i < clients.length; i++) {
         let {
@@ -142,7 +142,7 @@ export const getClientsEmploy = async() =>{
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
 export const getEmployeesCode = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     for (let i = 0; i < clients.length; i++) {
         let {
@@ -194,7 +194,7 @@ export const getEmployeesCode = async () => {
 // 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getClientsWithSalesRepresentatives = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithPayments = [];
 
@@ -267,7 +267,7 @@ export const getClientsWithSalesRepresentatives = async () => {
 // 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getClientsWithoutPayments = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithoutPayments = [];
 
@@ -329,7 +329,7 @@ export const getClientsWithoutPayments = async () => {
 
 
 export const getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithPayments = [];
 
@@ -416,7 +416,7 @@ export const getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity = async 
 // 5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithoutPayments = [];
 
@@ -492,7 +492,7 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
 // 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
 
 export const getOfficesClientsInFuenlabrada = async() => {
-    let resClients = await fetch("http://localhost:5501/clients?city=Fuenlabrada");
+    let resClients = await fetch("http://localhost:5341/clients?city=Fuenlabrada");
     let dataClients = await resClients.json();
     let dataEmployees = await getEmployeesCodeOffice();
     let dataOffices = await getAllOffices();
@@ -522,7 +522,7 @@ export const getOfficesClientsInFuenlabrada = async() => {
 // 10.Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
 
 export const getDelayedOrdersPayPalClients = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
 
     for (let i = 0; i < clients.length; i++) {
@@ -548,7 +548,7 @@ export const getDelayedOrdersPayPalClients = async () => {
 
 
 export const getClientByCode = async (code) => {
-    let res = await fetch(`http://localhost:5501/clients?client_code=${code}`)
+    let res = await fetch(`http://localhost:5341/clients?client_code=${code}`)
     let dataClient = await res.json()
     return dataClient
 }
@@ -562,7 +562,7 @@ export const getClientByCode = async (code) => {
 // 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
 
 export const clientsNoPayments = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithoutPayments = [];
 
@@ -622,7 +622,7 @@ export const clientsNoPayments = async () => {
 
 
 export const clientsNoOrder = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithoutOrder = [];
 
@@ -681,7 +681,7 @@ export const clientsNoPaymentsAndNoOrder = async () => {
 
 
 export const getClientsOk = async () => {
-    let res = await fetch("http://localhost:5501/clients?code_employee_sales_manager");
+    let res = await fetch("http://localhost:5341/clients?code_employee_sales_manager");
     let dataOffices = await res.json();
     return dataOffices;
 }
@@ -692,7 +692,7 @@ export const getClientsOk = async () => {
 
 // Devuelve un listado que muestre solamente los clientes que han realizado ningún pedido.
 export const clientsWithOrder = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithOrder = [];
 
@@ -729,7 +729,7 @@ export const clientsWithOrder = async () => {
 // 11 solucion 
 
 export const clientsWithOrderNoPayments = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://localhost:5341/clients");
     let clients = await res.json();
     let clientsWithOrderNoPayments = [];
 
