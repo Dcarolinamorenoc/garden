@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "close" : "fuser -k 5341/tcp & fuser -k 5342/tcp & fuser -k 5343/tcp & fuser -k 5344/tcp & fuser -k 5345/tcp & fuser -k 5346/tcp & fuser -k 5348/tcp & fuser -k 5349/tcp",
-    "start-all": "npm run clients & npm run employees & npm run gama & npm run offices & npm run payments & npm run products & npm run request_details & npm run requests & npm run dev",
+    "start-all": "npm run clients & npm run employees & npm run gama & npm run offices & npm run payments & npm run products & npm run request_details & npm run requests",
     "dev": "node --watch js/main.js",
     "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5341",
     "employees": "json-server -h 172.16.101.146 js/db/employees.json -p 5342",
