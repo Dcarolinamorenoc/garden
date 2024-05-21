@@ -1,7 +1,7 @@
 // 7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
 
 // export const getAllOrderStatuses =  async() =>{
-//     let res = await fetch ("http://localhost:5349/requests")
+//     let res = await fetch ("http://172.16.101.146:5349/requests")
 //     let data = await res.json();
 //     let dataUpdate = [];
 //     data.forEach(val => {
@@ -13,7 +13,7 @@
 // }
 
 export const getAllOrderStatuses = async () => {
-    let res = await fetch("http://localhost:5349/requests");
+    let res = await fetch("http://172.16.101.146:5349/requests");
     let data = await res.json();
     let uniqueStatuses = new Set();
 
@@ -27,7 +27,7 @@ export const getAllOrderStatuses = async () => {
 // 9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
 
 export const getAllDelayedOrders = async () =>{
-    let res = await fetch("http://localhost:5349/requests?status=Rechazado");
+    let res = await fetch("http://172.16.101.146:5349/requests?status=Rechazado");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -45,7 +45,7 @@ export const getAllDelayedOrders = async () =>{
 // 10.Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
 
 export const getDelayedOrdersList = async () =>{
-    let res = await fetch("http://localhost:5349/requests?status=Entregado");
+    let res = await fetch("http://172.16.101.146:5349/requests?status=Entregado");
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -70,7 +70,7 @@ export const getDelayedOrdersList = async () =>{
 // 11.Devuelve un listado de todos los pedidos que fueron rechazados en 2009.
 
 export const getRejectedOrders2009 = async () => {
-    let res = await fetch("http://localhost:5349/requests?status=Rechazado");
+    let res = await fetch("http://172.16.101.146:5349/requests?status=Rechazado");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -92,7 +92,7 @@ export const getRejectedOrders2009 = async () => {
 // 12.Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año.
 
 export const getOrdersDeliveredInJanuary = async () =>{
-    let res = await fetch("http://localhost:5349/requests?status=Entregado");
+    let res = await fetch("http://172.16.101.146:5349/requests?status=Entregado");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -116,7 +116,7 @@ export const getOrdersDeliveredInJanuary = async () =>{
 // 10.Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
 
 export const getAllPaymentsStatus = async() =>{
-    let res = await fetch("http://localhost:5349/requests?status=Pendiente");
+    let res = await fetch("http://172.16.101.146:5349/requests?status=Pendiente");
     let data = await res.json();
     return data;
 }
@@ -127,21 +127,21 @@ export const getAllPaymentsStatus = async() =>{
 // Consultas multitabla (Composición externa)
 
 export const getRequests = async (code) => {
-    let res = await fetch(`http://localhost:5349/requests?code_client=${code}`);
+    let res = await fetch(`http://172.16.101.146:5349/requests?code_client=${code}`);
     let dataRequests = await res.json();
     return dataRequests;
 }
 
 
 export const getRequestByDetails = async (code) => {
-    let res = await fetch(`http://localhost:5349/requests?code_request=${code}`)
+    let res = await fetch(`http://172.16.101.146:5349/requests?code_request=${code}`)
     let data = await res.json();
     return data
 }
 
 
 export const getAllRequests = async () => {
-    let res = await fetch("http://localhost:5349/requests");
+    let res = await fetch("http://172.16.101.146:5349/requests");
     let data = await res.json();
     return data;
 };

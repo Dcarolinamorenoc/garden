@@ -1,6 +1,6 @@
 // 15. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
 export const getOrnamentalProductsOver100StockByPrice = async () => {
-    let res = await fetch("http://localhost:5346/products?gama=Ornamentales");
+    let res = await fetch("http://172.16.101.146:5346/products?gama=Ornamentales");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -16,7 +16,7 @@ export const getOrnamentalProductsOver100StockByPrice = async () => {
 
 
 export const getProductByCode = async (code) => {
-    let res = await fetch(`http://localhost:5346/products?code_product=${code}`)
+    let res = await fetch(`http://172.16.101.146:5346/products?code_product=${code}`)
     let data = await res.json()
     return data
 }
@@ -27,11 +27,11 @@ export const getProductByCode = async (code) => {
 
 export const productsNeverOrdered = async () => {
     // Obtener la lista completa de productos
-    let resProducts = await fetch("http://localhost:5346/products");
+    let resProducts = await fetch("http://172.16.101.146:5346/products");
     let products = await resProducts.json();
 
     // Obtener la lista de productos en los detalles de pedido
-    let resRequestDetails = await fetch("http://localhost:5348/request_details");
+    let resRequestDetails = await fetch("http://172.16.101.146:5348/request_details");
     let requestDetails = await resRequestDetails.json();
 
     // Obtener los códigos de productos que han aparecido en los detalles de pedido
@@ -58,11 +58,11 @@ export const productsNeverOrdered = async () => {
 export const getAllProductsNeverOrderedWithDetails = async () => {
 
         // Obtener la lista completa de productos
-        let resProducts = await fetch("http://localhost:5346/products");
+        let resProducts = await fetch("http://172.16.101.146:5346/products");
         let products = await resProducts.json();
     
         // Obtener la lista de productos en los detalles de pedido
-        let resRequestDetails = await fetch("http://localhost:5348/request_details");
+        let resRequestDetails = await fetch("http://172.16.101.146:5348/request_details");
         let requestDetails = await resRequestDetails.json();
     
         // Obtener los códigos de productos que han aparecido en los detalles de pedido
@@ -72,7 +72,7 @@ export const getAllProductsNeverOrderedWithDetails = async () => {
         let productsNeverOrdered = products.filter(product => !orderedProductCodes.includes(product.code_product));
     
         // Obtener la información de la gama de productos
-        let resGama = await fetch("http://localhost:5343/gama"); // Reemplaza "ruta/a/tu/gama.json" con la ruta correcta a tu archivo gama.json
+        let resGama = await fetch("http://172.16.101.146:5343/gama"); // Reemplaza "ruta/a/tu/gama.json" con la ruta correcta a tu archivo gama.json
         let gamaData = await resGama.json();
     
         // Obtener los productos nunca pedidos con su información de gama

@@ -2,7 +2,7 @@
 
 
 export const getAllEmployeesWithBossAndCodeSeven = async() =>{
-    let rest = await fetch ("http://localhost:5342/employees?code_boss=7")
+    let rest = await fetch ("http://172.16.101.146:5342/employees?code_boss=7")
     let data = await rest.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -19,7 +19,7 @@ export const getAllEmployeesWithBossAndCodeSeven = async() =>{
 // 4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
 
 export const getBossFullNameAndEmail = async () => {
-    let res = await fetch("http://localhost:5342/employees");
+    let res = await fetch("http://172.16.101.146:5342/employees");
     let data = await res.json();
     let filteredData = data.filter(val => val.code_boss == null);
     return filteredData.map(val => ({
@@ -33,7 +33,7 @@ export const getBossFullNameAndEmail = async () => {
 // 5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
 
 export const getAllNonSalesRepresentativeEmployees = async () => {
-    let res = await fetch("http://localhost:5342/employees?position_ne=Representante%20Ventas")
+    let res = await fetch("http://172.16.101.146:5342/employees?position_ne=Representante%20Ventas")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -61,7 +61,7 @@ export const getAllNonSalesRepresentativeEmployees = async () => {
 // Obtener la informacion de un empleado por su codigo
 
 export const getEmployByCode = async(code) =>{
-    let res = await fetch(`http://localhost:5342/employees?employee_code=${code}`);
+    let res = await fetch(`http://172.16.101.146:5342/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -69,7 +69,7 @@ export const getEmployByCode = async(code) =>{
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
 export const getEmployeeData = async (code) => {
-    let res = await fetch(`http://localhost:5342/employees?employee_code=${code}`);
+    let res = await fetch(`http://172.16.101.146:5342/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -80,7 +80,7 @@ export const getEmployeeData = async (code) => {
 // 5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getEmployeesSales = async (code) => {
-    let res = await fetch(`http://localhost:5342/employees?employee_code=${code}`);
+    let res = await fetch(`http://172.16.101.146:5342/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -88,7 +88,7 @@ export const getEmployeesSales = async (code) => {
 
 
 export const getAllEmploy = async() =>{
-    let res = await fetch(`http://localhost:5342/employees`);
+    let res = await fetch(`http://172.16.101.146:5342/employees`);
     let data = await res.json();
     return data;
 }
@@ -141,7 +141,7 @@ export const getEmployeesWithBossesAndBossesOfBosses = async () => {
 // Consultas multitabla (Composición externa)
 
 export const getEmployees = async () => {
-    let res = await fetch("http://localhost:5342/employees");
+    let res = await fetch("http://172.16.101.146:5342/employees");
     let dataOffices = await res.json();
     return dataOffices;
 }
@@ -185,7 +185,7 @@ export const ListEmployeesWithoutAssociatedOffice = async () => {
 import { getClientsOk } from './clients.js';
 
 export const getEmployeesCodeOffice = async () => {
-    let res = await fetch(`http://localhost:5342/employees`)
+    let res = await fetch(`http://172.16.101.146:5342/employees`)
     let data = await res.json()
     return data
 }

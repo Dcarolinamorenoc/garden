@@ -5,7 +5,7 @@
 // Sin utilizar ninguna de las funciones anteriores.
 
 export const getUniqueClientCodesWithPaymentsIn2008 = async () => {
-    let res = await fetch("http://localhost:5345/payments");
+    let res = await fetch("http://172.16.101.146:5345/payments");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -24,7 +24,7 @@ export const getUniqueClientCodesWithPaymentsIn2008 = async () => {
 
 // 13. Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
 export const getPaypalPayments2008OrderedDescending = async () =>{
-    let res = await fetch("http://localhost:5345/payments?payment=PayPal");
+    let res = await fetch("http://172.16.101.146:5345/payments?payment=PayPal");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -42,7 +42,7 @@ export const getPaypalPayments2008OrderedDescending = async () =>{
 // 14.Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
 
 export const getAllUniquePaymentMethods = async () => {
-    let res = await fetch("http://localhost:5345/payments");
+    let res = await fetch("http://172.16.101.146:5345/payments");
     let data = await res.json();
     let dataUpdate = new Set();
 
@@ -64,14 +64,14 @@ export const getAllUniquePaymentMethods = async () => {
 // 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getPaymentsWithSales = async (code) => {
-    let res = await fetch(`http://localhost:5345/payments?code_client=${code}`);
+    let res = await fetch(`http://172.16.101.146:5345/payments?code_client=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
 
 
 export const getAllPayments = async () => {
-    let res = await fetch("http://localhost:5345/payments");
+    let res = await fetch("http://172.16.101.146:5345/payments");
     let data = await res.json();
     return data;
 };

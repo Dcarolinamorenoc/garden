@@ -1,7 +1,7 @@
 
 
 const getProductDetails = async (code_product) => {
-    let resGama = await fetch("http://localhost:5343/gama");
+    let resGama = await fetch("http://172.16.101.146:5343/gama");
     let gama = await resGama.json();
     let productDetails = gama.find(item => item.code_product === code_product);
 
